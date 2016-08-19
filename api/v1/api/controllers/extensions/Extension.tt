@@ -1,0 +1,101 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+  <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" 
+#>  <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" 
+#>  <#@ assembly name="System.Data" 
+#>  <#@ assembly name="C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll"
+#>  <#@ include file="C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\shared\helper.ttinclude" 
+#>  <#@ import namespace="Npgsql" 
+#>  <#@ import namespace="System.Data" 
+#>  <#@ import namespace="System.Globalization" 
+#>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ output extension="js" #>
+
+/******************************************************************************************************
+ 
+ <#=getCopyright()#>
+
+******************************************************************************************************/
+ 
+/******************************************************************************************************
+ controller extension
+******************************************************************************************************/
+"use strict";
+var _ = require('underscore');
+var common = require('./common.extension');
+
+/******************************************************************************************************
+ functions
+******************************************************************************************************/
+module.exports = {
+
+    setPost: function (req, mode) {
+        
+        //clean post
+        var body = _.pick(req.body
+		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+		if(allowFields(BaseColumnName,false,false,false)){#>
+		,'<#=BaseColumnName#>'
+		<#}}#> <#if (_singleName == "user"){#>		,'password'<#}#>
+		);
+
+        //add createdBy
+        if (mode == 'C') {
+		<# if (_singleName == "user")  {#>	body.createdBy = null;
+		<# } else { #> body.createdBy = common.modelUserId(req);<#}#>
+		
+		} else {
+            body.updatedBy = common.modelUserId(req);
+        }
+        return body;  
+
+    },
+    prepareForUpdate: function (body) {
+        
+        var attributes = {};
+
+		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+		if(allowFields(BaseColumnName,false,false,true)){#>if (body.hasOwnProperty('<#=BaseColumnName#>')) {
+			attributes.<#=BaseColumnName#> = body.<#=BaseColumnName#>;
+		}
+		<#}}#> 
+
+        return attributes;
+
+    },
+    setClauseQuery: function (query, where) {
+
+ 		if (query.hasOwnProperty('q') && query.q.length > 0) {
+			 where = {
+				$or: [
+  		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+		var DataType = row[(int)ColumnInfo.DataType].ToString();
+		if(allowFields(BaseColumnName,false,false,true)){
+		if(allowType("System.String",BaseColumnName,DataType,false,false,false)){#>
+		<#if(_recCount> 0){#>,<#}#>{<#=BaseColumnName#>: { $like: '%' + query.q + '%' }} <#_recCount++;#> 
+		<#}}}#> 			]
+				}
+			}
+
+  		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+		if(getIDfields(BaseColumnName,false,false)){#>
+	if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
+				where.<#=BaseColumnName#> = {
+				$eq: query.<#=BaseColumnName#>
+				};
+			}
+        <#}}#>
+
+        return where;
+
+    },
+
+};
+
+ 

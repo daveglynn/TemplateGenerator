@@ -1,0 +1,195 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+  <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" 
+#>  <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" 
+#>  <#@ assembly name="System.Data" 
+#>  <#@ assembly name="C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll"
+#>  <#@ include file="C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\shared\helper.ttinclude" 
+#>  <#@ import namespace="Npgsql" 
+#>  <#@ import namespace="System.Data" 
+#>  <#@ import namespace="System.Globalization" 
+#>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ output extension="js" #>
+
+/******************************************************************************************************
+ 
+ <#=getCopyright()#>
+
+******************************************************************************************************/
+
+/******************************************************************************************************
+ controller layer
+******************************************************************************************************/
+"use strict";
+var db = require('../.././db.js');
+var _ = require('underscore');
+var constants = require('../.././shared/constant.shared');
+var helpers = require('../.././shared/helpers.shared');
+var common = require('./extensions/common.extension');
+var extension = require('./extensions/<#=_singleName#>.extension');
+var controller = "user";
+var Sequelize = require('sequelize');
+<# if (_singleName == "user")  { #> 
+/******************************************************************************************************
+ Login 
+******************************************************************************************************/
+module.exports.usersLogin = function(req, res) {
+    var body = _.pick(req.body, 'email', 'password');
+    var userInstance;
+
+    db.user.authenticate(body).then(function(user) {
+        var token = user.generateToken('authentication');
+        userInstance = user;
+        return db.token.create({
+            token: token
+        });
+    }).then(function(tokenInstance) {
+        // could not read header in angular client so I jused used the response to send back the token
+        //res.header('Auth', tokenInstance.get('token')).json(userInstance.toPublicJSON());
+        res.status(200).json({
+            message: 'Signin Successful',
+            token: tokenInstance.get('token'),
+            user: userInstance.toPublicJSON()
+        }) 
+    }).catch(function() {
+        res.status(400).json({"err": {"name": "authorisation", "message": "Signin UnSuccessful"  }}   );
+    });
+};
+
+/******************************************************************************************************
+ Logout 
+******************************************************************************************************/
+module.exports.usersLogout = function(req, res) {
+    req.token.destroy().then(function() {
+        res.status(204).send();
+    }).catch(function(err) {
+        res.status(500).json(err);
+    });
+};
+<# } #> 
+/******************************************************************************************************
+ Insert a Record 
+******************************************************************************************************/
+module.exports.<#=_pluralName#>Post = function(req, res) {
+
+    // pick appropiate fields<#if (_tenantRequired == true){#> and set tenant  <# } #> 
+    var body = extension.setPost(req, 'C');
+               
+    db.<#=_singleName#>.create(body).then(function(<#=_singleName#>) {
+        res.json(<#=_singleName#>.toPublicJSON())
+    }).catch(Sequelize.ValidationError, function(err) {
+         res.status(422).send(err.errors);
+    }).catch(function(err) {
+        res.status(400).json(err);
+    });
+};
+
+/******************************************************************************************************
+ Get All Records 
+******************************************************************************************************/
+module.exports.<#=_pluralName#>GetAll = function(req, res) {
+
+    // builds clause 
+    var where = {};
+    where = common.setClauseAll(req, where);
+    where = extension.setClauseQuery(req.query, where);
+	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
+
+    var attributes = common.setAttributes();
+
+    db.<#=_singleName#>.findAll({
+        attributes: attributes,
+        where: where
+    }).then(function(<#=_pluralName#>) {
+        res.json(<#=_pluralName#>);
+    }, function(err) {
+        res.status(500).json(err);
+    })
+};
+
+/******************************************************************************************************
+ Get a Record by Id
+******************************************************************************************************/
+module.exports.<#=_pluralName#>GetById = function(req, res) {
+
+    // builds clause
+    var where = {};
+    where = common.setClauseId(req, where);
+	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
+
+    var attributes = common.setAttributes();
+
+    //find and return the records 
+    db.<#=_singleName#>.findOne({
+        attributes: attributes,
+        where: where
+    }).then(function(<#=_singleName#>) {
+        if (!!<#=_singleName#>) {
+            res.json(<#=_singleName#>.toPublicJSON());
+        } else {
+            res.status(404).json({"err": {"name": "<#=_singleName#>", "message": "An error occurred retrieving the record"  }});
+        }
+    }, function(err) {
+        res.status(500).json(err);
+    })
+};
+
+/******************************************************************************************************
+ Update a Record 
+******************************************************************************************************/
+module.exports.<#=_pluralName#>Put = function(req, res) {
+
+    // pick appropiate fields 
+    var body = extension.setPost(req, 'U');
+
+    // set the attributes to update
+    var attributes = extension.prepareForUpdate(body);
+
+    // builds clause
+    var where = {};
+    where = common.setClauseId(req, where);
+    <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
+
+    // find record on database, update record and return to client
+    db.<#=_singleName#>.findOne({
+        where: where
+    }).then(function(<#=_singleName#>) {
+        if (<#=_singleName#>) {
+            <#=_singleName#>.update(attributes).then(function(<#=_singleName#>) {
+                res.json(<#=_singleName#>.toPublicJSON());
+            }, function(err) {
+                res.status(400).json(err);
+            });
+        } else {
+             res.status(404).json({"err": {"name": "<#=_singleName#>", "message": "An error occurred retrieving the record"}});
+        }
+    }, function(err) {
+        res.status(500).json(err);
+    });
+};
+
+/******************************************************************************************************
+ Delete a Record 
+******************************************************************************************************/
+module.exports.<#=_pluralName#>Delete = function(req, res) {
+
+    // builds clause
+    var where = {};
+    where = common.setClauseId(req, where);
+    <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
+
+    // delete record on database
+    db.<#=_singleName#>.destroy({
+        where: where
+    }).then(function(rowsDeleted) {
+        if (rowsDeleted === 0) {
+            res.status(404).json({ "err": { "name": "<#=_singleName#>", "message": "An error occurred retrieving the record"}});
+        } else {
+            res.status(204).send();
+        }
+    }, function(err) {
+        res.status(500).json(err);
+    });
+};
