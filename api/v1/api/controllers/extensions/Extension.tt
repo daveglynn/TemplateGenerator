@@ -37,7 +37,7 @@ module.exports = {
         var body = _.pick(req.body
 		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,false)){#>
+		if(allowFields(BaseColumnName,false,false,false,false)){#>
 		,'<#=BaseColumnName#>'
 		<#}}#> <#if (_singleName == "user"){#>		,'password'<#}#>
 		);
@@ -59,7 +59,7 @@ module.exports = {
 
 		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,true)){#>if (body.hasOwnProperty('<#=BaseColumnName#>')) {
+		if(allowFields(BaseColumnName,false,false,true,false)){#>if (body.hasOwnProperty('<#=BaseColumnName#>')) {
 			attributes.<#=BaseColumnName#> = body.<#=BaseColumnName#>;
 		}
 		<#}}#> 
@@ -75,8 +75,8 @@ module.exports = {
   		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 		var DataType = row[(int)ColumnInfo.DataType].ToString();
-		if(allowFields(BaseColumnName,false,false,true)){
-		if(allowType("System.String",BaseColumnName,DataType,false,false,false)){#>
+		if(allowFields(BaseColumnName,false,false,true,false)){
+		if(allowType("System.String",BaseColumnName,DataType,false,false,false,false)){#>
 		<#if(_recCount> 0){#>,<#}#>{<#=BaseColumnName#>: { $like: '%' + query.q + '%' }} <#_recCount++;#> 
 		<#}}}#> 			]
 				}

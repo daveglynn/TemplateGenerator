@@ -74,7 +74,7 @@ module.exports = {
             #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,false)){
+		if(allowFields(BaseColumnName,false,false,false,false)){
             
             #line default
             #line hidden
@@ -134,7 +134,7 @@ if (_singleName == "user"){
             #line 60 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,true)){
+		if(allowFields(BaseColumnName,false,false,true,false)){
             
             #line default
             #line hidden
@@ -174,8 +174,8 @@ if (_singleName == "user"){
  foreach(DataRow row in GetColumnRow(_pluralName)) 
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 		var DataType = row[(int)ColumnInfo.DataType].ToString();
-		if(allowFields(BaseColumnName,false,false,true)){
-		if(allowType("System.String",BaseColumnName,DataType,false,false,false)){
+		if(allowFields(BaseColumnName,false,false,true,false)){
+		if(allowType("System.String",BaseColumnName,DataType,false,false,false,false)){
             
             #line default
             #line hidden
@@ -356,29 +356,32 @@ IEnumerable<DataRow> GetColumnRow(string tableName  )
 		 conn.Close();
 } 
 
-public bool allowFields(string columnName,bool includeTenant, bool includeId, bool includeBy  )  
+public bool allowFields(string columnName,bool includeTenant, bool includeId, bool includeBy ,bool includeAt )  
 {
-  if ((columnName == "updatedAt") ||
-      (columnName == "createdAt") ||
+  if (
       (columnName == "password_hash") ||
       (columnName == "salt")  ||
-	  ((columnName == "tenantId") && (includeTenant == true)) ||
-	  ((columnName == "updatedBy") && (includeBy == true)) ||
-	  ((columnName == "createdBy") && (includeBy == true)) ||
-	  ((columnName == "id") && (includeId == true))  )
+	  ((columnName == "tenantId") && (includeTenant == false)) ||
+	  ((columnName == "updatedBy") && (includeBy == false)) ||
+	  ((columnName == "createdBy") && (includeBy == false)) ||
+	  ((columnName == "updatedAt") && (includeAt == false)) ||
+	  ((columnName == "createdAt") && (includeAt == false)) ||
+	  ((columnName == "id") && (includeId == false))  )
   {
     return false;
   }
 	return true;
 }
  
-public bool allowType(string whatType,string columnName,string columnType,bool includeTenant, bool includeId, bool includeBy  )  
+public bool allowType(string whatType,string columnName,string columnType,bool includeTenant, bool includeId, bool includeBy, bool includeAt  )  
 {
    if (whatType == columnType)   
    {
-	 if (((columnName == "tenantId") && (includeTenant == true)) ||
-	    ((columnName == "updatedBy") && (includeBy == true)) ||
-	    ((columnName == "createdBy") && (includeBy == true)) ||
+	 if (((columnName == "tenantId") && (includeTenant == false)) ||
+	    ((columnName == "updatedBy") && (includeBy == false)) ||
+	    ((columnName == "createdBy") && (includeBy == false)) ||
+	    ((columnName == "updatedAt") && (includeAt == false)) ||
+	    ((columnName == "createdAt") && (includeAt == false)) ||
 	    ((columnName == "id") && (includeId == true))  ) {
 	       return false;
 	    } else {
@@ -394,8 +397,8 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
 {
    if (getLastChars(columnName,2) == "Id")   
    {
-	 if (((columnName == "tenantId") && (includeTenant == true)) ||
-	    ((columnName == "id") && (includeId == true))  ) {
+	 if (((columnName == "tenantId") && (includeTenant == false)) ||
+	    ((columnName == "id") && (includeId == false))  ) {
 	       return false;
 	    } else {
 		return true;

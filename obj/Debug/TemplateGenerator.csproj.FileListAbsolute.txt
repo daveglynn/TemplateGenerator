@@ -20,3 +20,11 @@ C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\bin\Debug\TemplateGe
 C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\bin\Debug\TemplateGenerator.pdb
 C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\bin\Debug\Npgsql.dll
 C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\bin\Debug\Npgsql.xml
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\bin\Debug\TemplateGenerator.exe.config
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\bin\Debug\TemplateGenerator.exe
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\bin\Debug\TemplateGenerator.pdb
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\bin\Debug\Npgsql.dll
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\bin\Debug\Npgsql.xml
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\obj\Debug\TemplateGenerator.csprojResolveAssemblyReference.cache
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\obj\Debug\TemplateGenerator.exe
+C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\obj\Debug\TemplateGenerator.pdb
