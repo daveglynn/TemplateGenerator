@@ -21,7 +21,7 @@ namespace TemplateGenerator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class Controller : ControllerBase
     {
@@ -44,7 +44,7 @@ namespace TemplateGenerator
             this.Write("\r\n/******************************************************************************" +
                     "************************\r\n \r\n ");
             
-            #line 18 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 18 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(getCopyright()));
             
             #line default
@@ -64,14 +64,14 @@ var helpers = require('../.././shared/helpers.shared');
 var common = require('./extensions/common.extension');
 var extension = require('./extensions/");
             
-            #line 31 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 31 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".extension\');\r\nvar controller = \"user\";\r\nvar Sequelize = require(\'sequelize\');\r\n");
             
-            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  if (_singleName == "user")  { 
             
             #line default
@@ -97,7 +97,7 @@ var extension = require('./extensions/");
                     "on() {\r\n        res.status(204).send();\r\n    }).catch(function(err) {\r\n        r" +
                     "es.status(500).json(err);\r\n    });\r\n};\r\n");
             
-            #line 71 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 71 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  } 
             
             #line default
@@ -107,42 +107,42 @@ var extension = require('./extensions/");
                     "********************************************************************/\r\nmodule.ex" +
                     "ports.");
             
-            #line 75 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 75 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write("Post = function(req, res) {\r\n\r\n    // pick appropiate fields");
             
-            #line 77 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 77 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write(" and set tenant  ");
             
-            #line 77 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 77 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n    var body = extension.setPost(req, \'C\');\r\n               \r\n    db.");
             
-            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".create(body).then(function(");
             
-            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        res.json(");
             
-            #line 81 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 81 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -160,7 +160,7 @@ if (_tenantRequired == true){
 ******************************************************************************************************/
 module.exports.");
             
-            #line 92 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 92 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -169,21 +169,21 @@ module.exports.");
                     "where = common.setClauseAll(req, where);\r\n    where = extension.setClauseQuery(r" +
                     "eq.query, where);\r\n\t");
             
-            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\r\n    var attributes = common.setAttributes();\r\n\r\n    db.");
             
-            #line 102 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 102 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -191,14 +191,14 @@ if (_tenantRequired == true){
             this.Write(".findAll({\r\n        attributes: attributes,\r\n        where: where\r\n    }).then(fu" +
                     "nction(");
             
-            #line 105 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 105 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        res.json(");
             
-            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -214,7 +214,7 @@ if (_tenantRequired == true){
 ******************************************************************************************************/
 module.exports.");
             
-            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -222,14 +222,14 @@ module.exports.");
             this.Write("GetById = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    " +
                     "where = common.setClauseId(req, where);\r\n\t");
             
-            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  } 
             
             #line default
@@ -237,7 +237,7 @@ if (_tenantRequired == true){
             this.Write(" \r\n\r\n    var attributes = common.setAttributes();\r\n\r\n    //find and return the re" +
                     "cords \r\n    db.");
             
-            #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -245,21 +245,21 @@ if (_tenantRequired == true){
             this.Write(".findOne({\r\n        attributes: attributes,\r\n        where: where\r\n    }).then(fu" +
                     "nction(");
             
-            #line 128 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 128 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        if (!!");
             
-            #line 129 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 129 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n            res.json(");
             
-            #line 130 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 130 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -267,7 +267,7 @@ if (_tenantRequired == true){
             this.Write(".toPublicJSON());\r\n        } else {\r\n            res.status(404).json({\"err\": {\"n" +
                     "ame\": \"");
             
-            #line 132 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 132 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -284,7 +284,7 @@ if (_tenantRequired == true){
 ******************************************************************************************************/
 module.exports.");
             
-            #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -302,56 +302,56 @@ module.exports.");
     where = common.setClauseId(req, where);
     ");
             
-            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n    // find record on database, update record and return to client\r\n    db.");
             
-            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".findOne({\r\n        where: where\r\n    }).then(function(");
             
-            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        if (");
             
-            #line 159 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 159 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n            ");
             
-            #line 160 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 160 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".update(attributes).then(function(");
             
-            #line 160 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 160 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n                res.json(");
             
-            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -360,7 +360,7 @@ if (_tenantRequired == true){
                     ").json(err);\r\n            });\r\n        } else {\r\n             res.status(404).js" +
                     "on({\"err\": {\"name\": \"");
             
-            #line 166 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 166 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -377,7 +377,7 @@ if (_tenantRequired == true){
 ******************************************************************************************************/
 module.exports.");
             
-            #line 176 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 176 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -385,21 +385,21 @@ module.exports.");
             this.Write("Delete = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    w" +
                     "here = common.setClauseId(req, where);\r\n    ");
             
-            #line 181 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 181 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 181 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 181 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n    // delete record on database\r\n    db.");
             
-            #line 184 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 184 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -407,7 +407,7 @@ if (_tenantRequired == true){
             this.Write(".destroy({\r\n        where: where\r\n    }).then(function(rowsDeleted) {\r\n        if" +
                     " (rowsDeleted === 0) {\r\n            res.status(404).json({ \"err\": { \"name\": \"");
             
-            #line 188 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\api\v1\api\controllers\Controller.tt"
+            #line 188 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -418,7 +418,7 @@ if (_tenantRequired == true){
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\shared\helper.ttinclude"
+        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\..\..\..\..\shared\helper.ttinclude"
 
  
 
@@ -455,7 +455,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\generator\v1\TemplateGenerator\shared\helper.ttinclude"
+        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -518,10 +518,10 @@ public bool allowFields(string columnName,bool includeTenant, bool includeId, bo
       (columnName == "createdAt") ||
       (columnName == "password_hash") ||
       (columnName == "salt")  ||
-	  ((columnName == "tenantId") && (includeTenant == false)) ||
-	  ((columnName == "updatedBy") && (includeBy == false)) ||
-	  ((columnName == "createdBy") && (includeBy == false)) ||
-	  ((columnName == "id") && (includeId == false))  )
+	  ((columnName == "tenantId") && (includeTenant == true)) ||
+	  ((columnName == "updatedBy") && (includeBy == true)) ||
+	  ((columnName == "createdBy") && (includeBy == true)) ||
+	  ((columnName == "id") && (includeId == true))  )
   {
     return false;
   }
@@ -532,10 +532,10 @@ public bool allowType(string whatType,string columnName,string columnType,bool i
 {
    if (whatType == columnType)   
    {
-	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "updatedBy") && (includeBy == false)) ||
-	    ((columnName == "createdBy") && (includeBy == false)) ||
-	    ((columnName == "id") && (includeId == false))  ) {
+	 if (((columnName == "tenantId") && (includeTenant == true)) ||
+	    ((columnName == "updatedBy") && (includeBy == true)) ||
+	    ((columnName == "createdBy") && (includeBy == true)) ||
+	    ((columnName == "id") && (includeId == true))  ) {
 	       return false;
 	    } else {
 		return true;
@@ -550,8 +550,8 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
 {
    if (getLastChars(columnName,2) == "Id")   
    {
-	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "id") && (includeId == false))  ) {
+	 if (((columnName == "tenantId") && (includeTenant == true)) ||
+	    ((columnName == "id") && (includeId == true))  ) {
 	       return false;
 	    } else {
 		return true;

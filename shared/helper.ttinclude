@@ -93,10 +93,10 @@ public bool allowFields(string columnName,bool includeTenant, bool includeId, bo
       (columnName == "createdAt") ||
       (columnName == "password_hash") ||
       (columnName == "salt")  ||
-	  ((columnName == "tenantId") && (includeTenant == false)) ||
-	  ((columnName == "updatedBy") && (includeBy == false)) ||
-	  ((columnName == "createdBy") && (includeBy == false)) ||
-	  ((columnName == "id") && (includeId == false))  )
+	  ((columnName == "tenantId") && (includeTenant == true)) ||
+	  ((columnName == "updatedBy") && (includeBy == true)) ||
+	  ((columnName == "createdBy") && (includeBy == true)) ||
+	  ((columnName == "id") && (includeId == true))  )
   {
     return false;
   }
@@ -107,10 +107,10 @@ public bool allowType(string whatType,string columnName,string columnType,bool i
 {
    if (whatType == columnType)   
    {
-	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "updatedBy") && (includeBy == false)) ||
-	    ((columnName == "createdBy") && (includeBy == false)) ||
-	    ((columnName == "id") && (includeId == false))  ) {
+	 if (((columnName == "tenantId") && (includeTenant == true)) ||
+	    ((columnName == "updatedBy") && (includeBy == true)) ||
+	    ((columnName == "createdBy") && (includeBy == true)) ||
+	    ((columnName == "id") && (includeId == true))  ) {
 	       return false;
 	    } else {
 		return true;
@@ -125,8 +125,8 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
 {
    if (getLastChars(columnName,2) == "Id")   
    {
-	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "id") && (includeId == false))  ) {
+	 if (((columnName == "tenantId") && (includeTenant == true)) ||
+	    ((columnName == "id") && (includeId == true))  ) {
 	       return false;
 	    } else {
 		return true;
