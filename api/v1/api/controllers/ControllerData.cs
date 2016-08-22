@@ -3,7 +3,7 @@
     partial class Controller
     {
         private readonly string _assemblyName;
-        private readonly string _singleName = "";
+        private  string _singleName = "";
         private readonly string _pluralName = "";
         private readonly bool _tenantRequired = false;
         private readonly int _recCount = 0;

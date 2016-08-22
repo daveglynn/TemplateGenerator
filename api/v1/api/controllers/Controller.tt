@@ -11,6 +11,7 @@
 #>  <#@ import namespace="System.Data" 
 #>  <#@ import namespace="System.Globalization" 
 #>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ import namespace="System.IO" 
 #>  <#@ output extension="js" #>
 
 /******************************************************************************************************
@@ -96,8 +97,7 @@ module.exports.<#=_pluralName#>GetAll = function(req, res) {
     where = common.setClauseAll(req, where);
     where = extension.setClauseQuery(req.query, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
-
-    var attributes = common.setAttributes();
+    var attributes = common.excludeAttributes();
 
     db.<#=_singleName#>.findAll({
         attributes: attributes,
@@ -118,8 +118,7 @@ module.exports.<#=_pluralName#>GetById = function(req, res) {
     var where = {};
     where = common.setClauseId(req, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
-
-    var attributes = common.setAttributes();
+    var attributes = common.excludeAttributes();
 
     //find and return the records 
     db.<#=_singleName#>.findOne({
@@ -193,3 +192,14 @@ module.exports.<#=_pluralName#>Delete = function(req, res) {
         res.status(500).json(err);
     });
 };
+
+
+ <# var _ungenerated = ""; #>
+		 
+<# if (_singleName == "list")  { 
+     if (File.Exists(@"C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\nongenerated\list.controller.js")) {
+	  _ungenerated = "This is even more extra text" + Environment.NewLine; 
+	 }
+ 	}
+#>
+<#=_ungenerated#>

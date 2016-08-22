@@ -157,6 +157,8 @@ public string firstUpper(string str)
  
 public string getCopyright()
 {
+
+
 	var copyRight = "";
     copyRight = "Copyright 2016 Olympus Consultancy Limited - All Rights Reserved "; 
     copyRight =  copyRight + Environment.NewLine + " " + "You may NOT use, copy, distribute or modify this code unless you have written " ; 
