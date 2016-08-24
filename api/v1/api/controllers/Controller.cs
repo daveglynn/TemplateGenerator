@@ -416,19 +416,19 @@ if (_tenantRequired == true){
             #line hidden
             this.Write("\", \"message\": \"An error occurred retrieving the record\"}});\r\n        } else {\r\n  " +
                     "          res.status(204).send();\r\n        }\r\n    }, function(err) {\r\n        re" +
-                    "s.status(500).json(err);\r\n    });\r\n};\r\n\r\n\r\n ");
+                    "s.status(500).json(err);\r\n    });\r\n};\r\n\r\n");
             
-            #line 197 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
- var _ungenerated = ""; 
+            #line 196 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
+ var _nongenerated = ""; 
             
             #line default
             #line hidden
-            this.Write("\t\t \r\n");
             
-            #line 199 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
+            #line 197 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
  if (_singleName == "list")  { 
-     if (File.Exists(@"C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\nongenerated\list.controller.js")) {
-	  _ungenerated = "This is even more extra text" + Environment.NewLine; 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api\\v1\\api\\controllers\\nongenerated\\list.controller.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
 	 }
  	}
 
@@ -436,8 +436,8 @@ if (_tenantRequired == true){
             #line default
             #line hidden
             
-            #line 205 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_ungenerated));
+            #line 204 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
             #line hidden

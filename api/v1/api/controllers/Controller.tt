@@ -193,13 +193,12 @@ module.exports.<#=_pluralName#>Delete = function(req, res) {
     });
 };
 
-
- <# var _ungenerated = ""; #>
-		 
+<# var _nongenerated = ""; #>
 <# if (_singleName == "list")  { 
-     if (File.Exists(@"C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api\v1\api\controllers\nongenerated\list.controller.js")) {
-	  _ungenerated = "This is even more extra text" + Environment.NewLine; 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api\\v1\\api\\controllers\\nongenerated\\list.controller.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
 	 }
  	}
 #>
-<#=_ungenerated#>
+<#=_nongenerated#>

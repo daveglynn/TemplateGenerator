@@ -74,6 +74,7 @@
       <DependentUpon>Extension.tt</DependentUpon>
     </Compile>
     <Compile Include="api\v1\api\controllers\extensions\ExtensionData.cs" />
+    <Content Include="api\v1\api\controllers\extensions\nongenerated\item.extension.js" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

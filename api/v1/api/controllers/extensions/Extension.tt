@@ -11,6 +11,7 @@
 #>  <#@ import namespace="System.Data" 
 #>  <#@ import namespace="System.Globalization" 
 #>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ import namespace="System.IO" 
 #>  <#@ output extension="js" #>
 
 /******************************************************************************************************
@@ -29,73 +30,96 @@ var common = require('./common.extension');
 /******************************************************************************************************
  functions
 ******************************************************************************************************/
-module.exports = {
-
-    setPost: function (req, mode) {
+module.exports.setPost = function (req, mode) {
         
-        //clean post
-        var body = _.pick(req.body
-		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
-		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,false,false)){#>
-		,'<#=BaseColumnName#>'
-		<#}}#> <#if (_singleName == "user"){#>		,'password'<#}#>
-		);
+    //clean post
+    var body = _.pick(req.body
+	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(allowFields(BaseColumnName,false,false,false,false)){#>
+	,'<#=BaseColumnName#>'
+	<#}}#> <#if (_singleName == "user"){#>		,'password'<#}#>
+	);
 
-        //add createdBy
-        if (mode == 'C') {
-		<# if (_singleName == "user")  {#>	body.createdBy = null;
-		<# } else { #> body.createdBy = common.modelUserId(req);<#}#>
+    //add createdBy
+    if (mode == 'C') {
+	<# if (_singleName == "user")  {#>	body.createdBy = null;
+	<# } else { #> body.createdBy = common.modelUserId(req);<#}#>
 		
-		} else {
-            body.updatedBy = common.modelUserId(req);
-        }
-        return body;  
-
-    },
-    prepareForUpdate: function (body) {
-        
-        var attributes = {};
-
-		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
-		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(allowFields(BaseColumnName,false,false,true,false)){#>if (body.hasOwnProperty('<#=BaseColumnName#>')) {
-			attributes.<#=BaseColumnName#> = body.<#=BaseColumnName#>;
-		}
-		<#}}#> 
-
-        return attributes;
-
-    },
-    setClauseQuery: function (query, where) {
-
- 		if (query.hasOwnProperty('q') && query.q.length > 0) {
-			 where = {
-				$or: [
-  		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
-		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		var DataType = row[(int)ColumnInfo.DataType].ToString();
-		if(allowFields(BaseColumnName,false,false,true,false)){
-		if(allowType("System.String",BaseColumnName,DataType,false,false,false,false)){#>
-		<#if(_recCount> 0){#>,<#}#>{<#=BaseColumnName#>: { $like: '%' + query.q + '%' }} <#_recCount++;#> 
-		<#}}}#> 			]
-				}
-			}
-
-  		<# foreach(DataRow row in GetColumnRow(_pluralName)) 
-		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-		if(getIDfields(BaseColumnName,false,false)){#>
-	if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
-				where.<#=BaseColumnName#> = {
-				$eq: query.<#=BaseColumnName#>
-				};
-			}
-        <#}}#>
-
-        return where;
-
-    },
-
+	} else {
+        body.updatedBy = common.modelUserId(req);
+    }
+    return body;  
 };
 
+module.exports.prepareForUpdate =  function (body) {
+        
+    var attributes = {};
+
+	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(allowFields(BaseColumnName,false,false,true,false)){#>if (body.hasOwnProperty('<#=BaseColumnName#>')) {
+		attributes.<#=BaseColumnName#> = body.<#=BaseColumnName#>;
+	}
+	<#}}#> 
+    return attributes;
+};
+
+module.exports.setClauseQuery =  function (query, where) {	
+
+ 	if (query.hasOwnProperty('q') && query.q.length > 0) {
+		where = {
+		$or: [
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	var DataType = row[(int)ColumnInfo.DataType].ToString();
+	if(allowFields(BaseColumnName,false,false,true,false)){
+	if(allowType("System.String",BaseColumnName,DataType,false,false,false,false)){#>
+	<#if(_recCount> 0){#>,<#}#>{<#=BaseColumnName#>: { $like: '%' + query.q + '%' }} <#_recCount++;#> 
+	<#}}}#> 			]
+			}
+		}
+
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	var DataType = row[(int)ColumnInfo.DataType].ToString();
+	if(allowFields(BaseColumnName,false,false,true,false)){
+	if(allowType("System.Boolean",BaseColumnName,DataType,false,false,false,false)){#>
+if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
+			where.<#=BaseColumnName#> = {
+			$eq: query.<#=BaseColumnName#>
+			};
+		}
+    <#}}}#>
+
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
+			where.<#=BaseColumnName#> = {
+			$eq: query.<#=BaseColumnName#>
+			};
+		}
+    <#}}#>
+
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
+			where.<#=BaseColumnName#> = {
+			$eq: query.<#=BaseColumnName#>
+			};
+		}
+    <#}}#>
+	return where;
+};
+<# var _nongenerated = ""; #>
+<# if (_singleName == "item")  { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api\\v1\\api\\controllers\\extensions\\nongenerated\\item.extension.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
+	 }
+ 	}
+#>
+<#=_nongenerated#>
  
