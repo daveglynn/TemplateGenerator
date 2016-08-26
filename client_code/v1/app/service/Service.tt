@@ -28,7 +28,6 @@ import {Injectable} from '@angular/core';
 import { Http, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
-
 import { ConstantsService } from   '../shared/helpers/constants.service';
 import { CommonService } from   '../shared/helpers/common.service';
 
@@ -70,7 +69,6 @@ export class <#=firstUpper(_singleName)#>Service {
 	}
     
     get<#=firstUpper(_singleName)#>(<#=_singleName#>Id) {
-        //return this._http.get(this._url + "/" + <#=_singleName#>Id
         return this._http.get(this._url + "/<#=_singleName#>/" + <#=_singleName#>Id, { search: this._commonService.getTokenAsParm() })
             .map(res => res.json())
             .catch(error => Observable.throw(error.json()))
@@ -108,6 +106,6 @@ export class <#=firstUpper(_singleName)#>Service {
 	 }
  	}
 #>
-<#=_nongenerated#>		
-
+<#=_nongenerated#>	
+	
 }
