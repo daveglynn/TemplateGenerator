@@ -1,0 +1,113 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+  <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" 
+#>  <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" 
+#>  <#@ assembly name="System.Data" 
+#>  <#@ assembly name="..\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll"
+#>  <#@ include file="..\..\..\..\shared\helper.ttinclude" 
+#>  <#@ import namespace="Npgsql" 
+#>  <#@ import namespace="System.Data" 
+#>  <#@ import namespace="System.Globalization" 
+#>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ import namespace="System.IO" 
+#>  <#@ output extension="js" #>
+
+/******************************************************************************************************
+ 
+ <#=getCopyright()#>
+
+******************************************************************************************************/
+
+/******************************************************************************************************
+ service layer
+******************************************************************************************************/
+"use strict";
+import {Injectable} from '@angular/core';
+import { Http, Headers } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
+
+import { ConstantsService } from   '../shared/helpers/constants.service';
+import { CommonService } from   '../shared/helpers/common.service';
+
+@Injectable()
+
+export class <#=firstUpper(_singleName)#>Service {
+
+    private _url = this._cs.serverUrl;
+
+    constructor(private _cs: ConstantsService, private _commonService: CommonService,private _http: Http){
+	}
+
+    get<#=firstUpper(_singleName)#>s(filter?) {
+        var parms = {};
+        if (filter && filter.q) {
+            parms['q'] = filter.q;
+        }
+	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+	if (filter && filter.<#=BaseColumnName#>) {
+            parms['<#=BaseColumnName#>'] = filter.<#=BaseColumnName#>;
+		};
+    <#}}#>
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	var DataType = row[(int)ColumnInfo.DataType].ToString();
+	if(allowFields(BaseColumnName,false,false,true,false)){
+	if(allowType("System.Boolean",BaseColumnName,DataType,false,false,false,false)){#>
+	if (filter && filter.<#=BaseColumnName#>) {
+             parms['<#=BaseColumnName#>'] = filter.<#=BaseColumnName#>;
+		};
+    <#}}}#>
+
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        return this._http.get(this._url + "/<#=_singleName#>/all", { search: this._commonService.setParms(parms) })
+            .map(res => res.json())
+            .catch(error => Observable.throw(error.json()))
+	}
+    
+    get<#=firstUpper(_singleName)#>(<#=_singleName#>Id) {
+        //return this._http.get(this._url + "/" + <#=_singleName#>Id
+        return this._http.get(this._url + "/<#=_singleName#>/" + <#=_singleName#>Id, { search: this._commonService.getTokenAsParm() })
+            .map(res => res.json())
+            .catch(error => Observable.throw(error.json()))
+	}
+
+    add<#=firstUpper(_singleName)#>(<#=_singleName#>) {
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const body = JSON.stringify(<#=_singleName#>);
+        return this._http.post(this._url + "/<#=_singleName#>/", body, { headers: headers, search: this._commonService.getTokenAsParm() })
+            .map(response => response.json())
+            .catch(error => Observable.throw(error.json()))
+	}
+    
+    update<#=firstUpper(_singleName)#>(<#=_singleName#>) {
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const body = JSON.stringify(<#=_singleName#>);
+        return this._http.put(this._url + "/<#=_singleName#>/" + <#=_singleName#>.id, body, { headers: headers, search: this._commonService.getTokenAsParm() })
+            .map(response => response.json())
+            .catch(error => Observable.throw(error.json()))
+	}
+    
+    delete<#=firstUpper(_singleName)#>(<#=_singleName#>Id) {
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        return this._http.delete(this._url + "/<#=_singleName#>/" + <#=_singleName#>Id, { headers: headers, search: this._commonService.getTokenAsParm() })
+            .map(response => response.json())
+            .catch(error => Observable.throw(error.json()))
+
+    }
+
+<# var _nongenerated = ""; #>
+<# if (_singleName == "user")  { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\user.service.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
+	 }
+ 	}
+#>
+<#=_nongenerated#>		
+
+}

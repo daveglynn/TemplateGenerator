@@ -10,10 +10,14 @@ namespace TemplateGenerator
         static void Main(string[] args)
         {
 
-            callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+            //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api_code\\v1\\api\\");
 
-            //callGenerateApi("C:\\temp\\");
+           // callGenerateApi("C:\\temp\\");
+
+            callGenerateClient("C:\\temp\\");
+
         }
+
         static void callGenerateApi(string directory)
         {
         
@@ -36,6 +40,22 @@ namespace TemplateGenerator
             callGeneratorExtension(directory + "controllers\\extensions\\", "language", "languages", false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false);
+
+        }
+
+        static void callGenerateClient(string directory)
+        {
+
+            callGeneratorService(directory + "user\\", "user", "users", false);
+            callGeneratorService(directory + "profile\\", "profile", "profiles", true);
+            // callGeneratorService(directory + "tenant\\", "tenant", "tenants", false);
+            // callGeneratorService(directory + "todo\\", "todo", "todos", true);
+            // callGeneratorService(directory + "order\\", "order", "orders", true);
+            //  callGeneratorService(directory + "list\\", "list", "lists", false);
+            //  callGeneratorService(directory + "language\\", "language", "languages", false);
+            //  callGeneratorService(directory + "item\\", "item", "items", false);
+            // callGeneratorService(directory + "ruleBook\\", "ruleBook", "ruleBooks", false);
+
         }
 
         static void callGeneratorController(string directory, string singleName, string pluralName, bool tenantRequired) 
@@ -53,5 +73,14 @@ namespace TemplateGenerator
             File.WriteAllText(path, result);
         
         }
+
+        static void callGeneratorService(string directory, string singleName, string pluralName, bool tenantRequired)
+        {
+            string path = @directory + singleName + ".service.js";
+            var service = new Service("TemplateGenerator", singleName, pluralName, false);
+            var result = service.TransformText();
+            File.WriteAllText(path, result);
+        }
+
     }
 }

@@ -62,30 +62,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="api\v1\api\controllers\Controller.cs">
+    <Compile Include="api_code\v1\api\controllers\Controller.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
-    <Compile Include="api\v1\api\controllers\ControllerData.cs" />
-    <Compile Include="api\v1\api\controllers\extensions\Extension.cs">
+    <Compile Include="api_code\v1\api\controllers\ControllerData.cs" />
+    <Compile Include="api_code\v1\api\controllers\extensions\Extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Extension.tt</DependentUpon>
     </Compile>
-    <Compile Include="api\v1\api\controllers\extensions\ExtensionData.cs" />
-    <Content Include="api\v1\api\controllers\extensions\nongenerated\item.extension.js" />
+    <Compile Include="api_code\v1\api\controllers\extensions\ExtensionData.cs" />
+    <Content Include="api_code\v1\api\controllers\extensions\nongenerated\item.extension.js" />
+    <Compile Include="client_code\v1\app\service\Service.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="client_code\v1\app\service\ServiceData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="client_code\v1\app\service\nongenerated\user.service.js" />
+    <None Include="client_code\v1\app\service\Service.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Service.cs</LastGenOutput>
+      <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="api\v1\api\controllers\nongenerated\list.controller.js" />
+    <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="shared\helper.ttinclude" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="api\v1\api\controllers\Controller.tt">
+    <None Include="api_code\v1\api\controllers\Controller.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Controller.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
@@ -95,7 +107,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="api\v1\api\controllers\extensions\Extension.tt">
+    <None Include="api_code\v1\api\controllers\extensions\Extension.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Extension.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
@@ -112,6 +124,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="client_code\v1\app\component\" />
+    <Folder Include="client_code\v1\app\html\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

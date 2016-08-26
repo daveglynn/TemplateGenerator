@@ -31,7 +31,7 @@ var common = require('./common.extension');
  functions
 ******************************************************************************************************/
 module.exports.setPost = function (req, mode) {
-        
+ 
     //clean post
     var body = _.pick(req.body
 	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
@@ -115,7 +115,7 @@ if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.len
 };
 <# var _nongenerated = ""; #>
 <# if (_singleName == "item")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api\\v1\\api\\controllers\\extensions\\nongenerated\\item.extension.js";
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\item.extension.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }

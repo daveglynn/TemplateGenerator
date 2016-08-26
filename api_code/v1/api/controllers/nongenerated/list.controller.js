@@ -1,7 +1,7 @@
 ﻿/******************************************************************************************************
  Get item list records
 ******************************************************************************************************/
-module.exports.listsItemsById = function (req, res) {
+module.exports.listIdItem = function (req, res) {
 
     // build clause 
     var where = {};
