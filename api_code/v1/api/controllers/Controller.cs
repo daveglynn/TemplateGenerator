@@ -80,24 +80,24 @@ var extension = require('./extensions/");
             #line hidden
             this.Write(" \r\n/*****************************************************************************" +
                     "*************************\r\n Login \r\n********************************************" +
-                    "**********************************************************/\r\nmodule.exports.user" +
-                    "Login = function(req, res) {\r\n    var body = _.pick(req.body, \'email\', \'password" +
-                    "\');\r\n    var userInstance;\r\n\r\n    db.user.authenticate(body).then(function(user)" +
-                    " {\r\n        var token = user.generateToken(\'authentication\');\r\n        userInsta" +
-                    "nce = user;\r\n        return db.token.create({\r\n            token: token\r\n       " +
-                    " });\r\n    }).then(function(tokenInstance) {\r\n        // could not read header in" +
-                    " angular client so I jused used the response to send back the token\r\n        //r" +
-                    "es.header(\'Auth\', tokenInstance.get(\'token\')).json(userInstance.toPublicJSON());" +
-                    "\r\n        res.status(200).json({\r\n            message: \'Signin Successful\',\r\n   " +
-                    "         token: tokenInstance.get(\'token\'),\r\n            user: userInstance.toPu" +
-                    "blicJSON()\r\n        }) \r\n    }).catch(function() {\r\n        res.status(400).json" +
-                    "({\"err\": {\"name\": \"authorisation\", \"message\": \"Signin UnSuccessful\"  }}   );\r\n  " +
-                    "  });\r\n};\r\n\r\n/******************************************************************" +
-                    "************************************\r\n Logout \r\n********************************" +
-                    "**********************************************************************/\r\nmodule." +
-                    "exports.userLogout = function(req, res) {\r\n    req.token.destroy().then(function" +
-                    "() {\r\n        res.status(204).send();\r\n    }).catch(function(err) {\r\n        res" +
-                    ".status(500).json(err);\r\n    });\r\n};\r\n");
+                    "**********************************************************/\r\nmodule.exports.logi" +
+                    "n = function(req, res) {\r\n    var body = _.pick(req.body, \'email\', \'password\');\r" +
+                    "\n    var userInstance;\r\n\r\n    db.user.authenticate(body).then(function(user) {\r\n" +
+                    "        var token = user.generateToken(\'authentication\');\r\n        userInstance " +
+                    "= user;\r\n        return db.token.create({\r\n            token: token\r\n        });" +
+                    "\r\n    }).then(function(tokenInstance) {\r\n        // could not read header in ang" +
+                    "ular client so I jused used the response to send back the token\r\n        //res.h" +
+                    "eader(\'Auth\', tokenInstance.get(\'token\')).json(userInstance.toPublicJSON());\r\n  " +
+                    "      res.status(200).json({\r\n            message: \'Signin Successful\',\r\n       " +
+                    "     token: tokenInstance.get(\'token\'),\r\n            user: userInstance.toPublic" +
+                    "JSON()\r\n        }) \r\n    }).catch(function() {\r\n        res.status(400).json({\"e" +
+                    "rr\": {\"name\": \"authorisation\", \"message\": \"Signin UnSuccessful\"  }}   );\r\n    })" +
+                    ";\r\n};\r\n\r\n/**********************************************************************" +
+                    "********************************\r\n Logout \r\n************************************" +
+                    "******************************************************************/\r\nmodule.expo" +
+                    "rts.logout = function(req, res) {\r\n    req.token.destroy().then(function() {\r\n  " +
+                    "      res.status(204).send();\r\n    }).catch(function(err) {\r\n        res.status(" +
+                    "500).json(err);\r\n    });\r\n};\r\n");
             
             #line 72 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
@@ -107,14 +107,14 @@ var extension = require('./extensions/");
             this.Write(" \r\n/*****************************************************************************" +
                     "*************************\r\n Insert a Record \r\n**********************************" +
                     "********************************************************************/\r\nmodule.ex" +
-                    "ports.");
+                    "ports.add");
             
             #line 76 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write("Post = function(req, res) {\r\n\r\n    // pick appropiate fields");
+            this.Write(" = function(req, res) {\r\n\r\n    // pick appropiate fields");
             
             #line 78 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
@@ -160,16 +160,16 @@ if (_tenantRequired == true){
 /******************************************************************************************************
  Get All Records 
 ******************************************************************************************************/
-module.exports.");
+module.exports.get");
             
             #line 93 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
             
             #line default
             #line hidden
-            this.Write("GetAll = function(req, res) {\r\n\r\n    // builds clause \r\n    var where = {};\r\n    " +
-                    "where = common.setClauseAll(req, where);\r\n    where = extension.setClauseQuery(r" +
-                    "eq.query, where);\r\n\t");
+            this.Write("All = function(req, res) {\r\n\r\n    // builds clause \r\n    var where = {};\r\n    whe" +
+                    "re = common.setClauseAll(req, where);\r\n    where = extension.setClauseQuery(req." +
+                    "query, where);\r\n\t");
             
             #line 99 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
@@ -214,15 +214,15 @@ if (_tenantRequired == true){
 /******************************************************************************************************
  Get a Record by Id
 ******************************************************************************************************/
-module.exports.");
+module.exports.get");
             
             #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write("GetById = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    " +
-                    "where = common.setClauseId(req, where);\r\n\t");
+            this.Write("ById = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    whe" +
+                    "re = common.setClauseId(req, where);\r\n\t");
             
             #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
@@ -284,14 +284,14 @@ if (_tenantRequired == true){
 /******************************************************************************************************
  Update a Record 
 ******************************************************************************************************/
-module.exports.");
+module.exports.update");
             
             #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write(@"Put = function(req, res) {
+            this.Write(@" = function(req, res) {
 
     // pick appropiate fields 
     var body = extension.setPost(req, 'U');
@@ -377,15 +377,15 @@ if (_tenantRequired == true){
 /******************************************************************************************************
  Delete a Record 
 ******************************************************************************************************/
-module.exports.");
+module.exports.delete");
             
             #line 175 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write("Delete = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    w" +
-                    "here = common.setClauseId(req, where);\r\n    ");
+            this.Write(" = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    where =" +
+                    " common.setClauseId(req, where);\r\n    ");
             
             #line 180 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
@@ -425,8 +425,8 @@ if (_tenantRequired == true){
             #line hidden
             
             #line 197 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- if (_singleName == "list")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\list.controller.js";
+ if (_singleName == "item")  { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }

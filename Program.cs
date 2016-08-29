@@ -10,11 +10,10 @@ namespace TemplateGenerator
         static void Main(string[] args)
         {
 
-            //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api_code\\v1\\api\\");
-            // callGenerateApi("C:\\temp\\");
+           // callGenerateApi("C:\\temp\\");
+           // callGenerateClient("C:\\temp\\");
 
-            // callGenerateClient("C:\\temp\\");
-            //callGenerateClient("C:\\temp\\");
+            callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
             callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
 
         }
@@ -41,6 +40,16 @@ namespace TemplateGenerator
             callGeneratorExtension(directory + "controllers\\extensions\\", "language", "languages", false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false);
+
+            callGeneratorRouter(directory + "routes\\", "item", "items", false);
+            callGeneratorRouter(directory + "routes\\", "language", "languages", false);
+            callGeneratorRouter(directory + "routes\\", "list", "lists", false);
+            callGeneratorRouter(directory + "routes\\", "order", "orders", false);
+            callGeneratorRouter(directory + "routes\\", "profile", "profiles", false);
+            callGeneratorRouter(directory + "routes\\", "ruleBook", "ruleBooks", false);
+            callGeneratorRouter(directory + "routes\\", "tenant", "tenants", false);
+            callGeneratorRouter(directory + "routes\\", "todo", "todos", false);
+            callGeneratorRouter(directory + "routes\\", "user", "users", false);
 
         }
 
@@ -80,7 +89,13 @@ namespace TemplateGenerator
             File.WriteAllText(path, result);
         
         }
-
+        static void callGeneratorRouter(string directory, string singleName, string pluralName, bool tenantRequired)
+        {
+            string path = @directory + singleName + ".router.js";
+            var Router = new Router("TemplateGenerator", singleName, pluralName, false);
+            var result = Router.TransformText();
+            File.WriteAllText(path, result);
+        }
         static void callGeneratorService(string directory, string singleName, string pluralName, bool tenantRequired)
         {
             string path = @directory + singleName + ".service.ts";

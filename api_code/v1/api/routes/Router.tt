@@ -1,0 +1,59 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+  <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" 
+#>  <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" 
+#>  <#@ assembly name="System.Data" 
+#>  <#@ assembly name="..\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll"
+#>  <#@ include file="..\..\..\..\shared\helper.ttinclude" 
+#>  <#@ import namespace="Npgsql" 
+#>  <#@ import namespace="System.Data" 
+#>  <#@ import namespace="System.Globalization" 
+#>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ import namespace="System.IO" 
+#>  <#@ output extension="js" #>
+
+/******************************************************************************************************
+ 
+ <#=getCopyright()#>
+
+******************************************************************************************************/
+
+/******************************************************************************************************
+ router
+******************************************************************************************************/
+"use strict";
+var express = require('express'), app = express();
+var router = express.Router();
+var _ = require('underscore');
+var db = require('../.././db.js');
+var middleware = require('../.././middleware.js')(db);
+var ctrl<#=firstUpper(_singleName)#> = require('../controllers/<#=firstUpper(_singleName)#>.controller.js');
+
+router
+    .route('/')
+    .post(ctrl<#=firstUpper(_singleName)#>.add<#=firstUpper(_singleName)#>);
+router
+    .route('/all')
+    .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>All);
+router
+    .route('/:id')
+    .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_singleName)#>ById);
+router
+    .route('/:id')
+    .put(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.update<#=firstUpper(_singleName)#>);
+router
+    .route('/:id')
+    .delete(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.delete<#=firstUpper(_singleName)#>);
+
+<# var _nongenerated = ""; #>
+<# if ( (_singleName == "user") ||  (_singleName == "item") ) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
+	 }
+ 	}
+#>
+<#=_nongenerated#>
+module.exports = router

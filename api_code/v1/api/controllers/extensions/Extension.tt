@@ -101,21 +101,26 @@ if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.len
 			};
 		}
     <#}}#>
-
+	return where;
+};
   	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
-if (query.hasOwnProperty('<#=BaseColumnName#>') && query.<#=BaseColumnName#>.length > 0) {
-			where.<#=BaseColumnName#> = {
-			$eq: query.<#=BaseColumnName#>
-			};
-		}
-    <#}}#>
+
+module.exports.setClause<#=firstUpper(BaseColumnName)#> = function (req, where) {
+  
+    var <#=BaseColumnName#> = parseInt(req.params.<#=BaseColumnName#>, 10);
+    where = {
+        <#=BaseColumnName#>: <#=BaseColumnName#>
+    };
 	return where;
 };
+	<#}}#>
+
+
 <# var _nongenerated = ""; #>
-<# if (_singleName == "item")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\item.extension.js";
+<# if ((_singleName == "item") ) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\"+ _singleName +".extension.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }

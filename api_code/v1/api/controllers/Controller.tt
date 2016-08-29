@@ -36,7 +36,7 @@ var Sequelize = require('sequelize');
 /******************************************************************************************************
  Login 
 ******************************************************************************************************/
-module.exports.userLogin = function(req, res) {
+module.exports.login = function(req, res) {
     var body = _.pick(req.body, 'email', 'password');
     var userInstance;
 
@@ -62,7 +62,7 @@ module.exports.userLogin = function(req, res) {
 /******************************************************************************************************
  Logout 
 ******************************************************************************************************/
-module.exports.userLogout = function(req, res) {
+module.exports.logout = function(req, res) {
     req.token.destroy().then(function() {
         res.status(204).send();
     }).catch(function(err) {
@@ -73,7 +73,7 @@ module.exports.userLogout = function(req, res) {
 /******************************************************************************************************
  Insert a Record 
 ******************************************************************************************************/
-module.exports.<#=_singleName#>Post = function(req, res) {
+module.exports.add<#=firstUpper(_singleName)#> = function(req, res) {
 
     // pick appropiate fields<#if (_tenantRequired == true){#> and set tenant  <# } #> 
     var body = extension.setPost(req, 'C');
@@ -90,7 +90,7 @@ module.exports.<#=_singleName#>Post = function(req, res) {
 /******************************************************************************************************
  Get All Records 
 ******************************************************************************************************/
-module.exports.<#=_singleName#>GetAll = function(req, res) {
+module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
 
     // builds clause 
     var where = {};
@@ -112,7 +112,7 @@ module.exports.<#=_singleName#>GetAll = function(req, res) {
 /******************************************************************************************************
  Get a Record by Id
 ******************************************************************************************************/
-module.exports.<#=_singleName#>GetById = function(req, res) {
+module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
 
     // builds clause
     var where = {};
@@ -138,7 +138,7 @@ module.exports.<#=_singleName#>GetById = function(req, res) {
 /******************************************************************************************************
  Update a Record 
 ******************************************************************************************************/
-module.exports.<#=_singleName#>Put = function(req, res) {
+module.exports.update<#=firstUpper(_singleName)#> = function(req, res) {
 
     // pick appropiate fields 
     var body = extension.setPost(req, 'U');
@@ -172,7 +172,7 @@ module.exports.<#=_singleName#>Put = function(req, res) {
 /******************************************************************************************************
  Delete a Record 
 ******************************************************************************************************/
-module.exports.<#=_singleName#>Delete = function(req, res) {
+module.exports.delete<#=firstUpper(_singleName)#> = function(req, res) {
 
     // builds clause
     var where = {};
@@ -194,8 +194,8 @@ module.exports.<#=_singleName#>Delete = function(req, res) {
 };
 
 <# var _nongenerated = ""; #>
-<# if (_singleName == "list")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\list.controller.js";
+<# if (_singleName == "item")  { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }

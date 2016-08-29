@@ -80,12 +80,12 @@ export class ");
                     "\r\n\t}\r\n\r\n    get");
             
             #line 43 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
             
             #line default
             #line hidden
-            this.Write("s(filter?) {\r\n        var parms = {};\r\n        if (filter && filter.q) {\r\n       " +
-                    "     parms[\'q\'] = filter.q;\r\n        }\r\n\t");
+            this.Write("All(filter?) {\r\n        var parms = {};\r\n        if (filter && filter.q) {\r\n     " +
+                    "       parms[\'q\'] = filter.q;\r\n        }\r\n\t");
             
             #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  foreach(DataRow row in GetColumnRow(_pluralName)) 
@@ -178,7 +178,7 @@ export class ");
             
             #line default
             #line hidden
-            this.Write("(");
+            this.Write("ById(");
             
             #line 71 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
@@ -310,8 +310,8 @@ export class ");
             #line hidden
             
             #line 102 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- if (_singleName == "user")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\user.service.js";
+ if ((_singleName == "user") || (_singleName == "item")) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }

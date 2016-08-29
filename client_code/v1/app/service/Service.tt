@@ -40,7 +40,7 @@ export class <#=firstUpper(_singleName)#>Service {
     constructor(private _cs: ConstantsService, private _commonService: CommonService,private _http: Http){
 	}
 
-    get<#=firstUpper(_singleName)#>s(filter?) {
+    get<#=firstUpper(_pluralName)#>All(filter?) {
         var parms = {};
         if (filter && filter.q) {
             parms['q'] = filter.q;
@@ -68,7 +68,7 @@ export class <#=firstUpper(_singleName)#>Service {
             .catch(error => Observable.throw(error.json()))
 	}
     
-    get<#=firstUpper(_singleName)#>(<#=_singleName#>Id) {
+    get<#=firstUpper(_singleName)#>ById(<#=_singleName#>Id) {
         return this._http.get(this._url + "/<#=_singleName#>/" + <#=_singleName#>Id, { search: this._commonService.getTokenAsParm() })
             .map(res => res.json())
             .catch(error => Observable.throw(error.json()))
@@ -99,8 +99,8 @@ export class <#=firstUpper(_singleName)#>Service {
     }
 
 <# var _nongenerated = ""; #>
-<# if (_singleName == "user")  { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\user.service.js";
+<# if ((_singleName == "user") || (_singleName == "item")) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }
