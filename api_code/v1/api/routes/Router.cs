@@ -74,11 +74,12 @@ var ctrl");
             this.Write(" = require(\'../controllers/");
             
             #line 32 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
-            this.Write(".controller.js\');\r\n\r\nrouter\r\n    .route(\'/\')\r\n    .post(ctrl");
+            this.Write(".controller.js\');\r\n\r\nrouter\r\n    .route(\'/\')\r\n    .post(middleware.requireAuthent" +
+                    "ication, middleware.requireAuthorisation, ctrl");
             
             #line 36 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
@@ -339,9 +340,15 @@ public string getLastChars( string source,  int tail_length)
  
 public string firstUpper(string str)
 {
-    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
+    if (String.IsNullOrEmpty(str)) return str;
+    if (str.Length == 1) return str.ToUpper();
+    return str.Remove(1).ToUpper() + str.Substring(1);
 }
 
+public string removeId(string str)
+{
+    return str.Remove(str.Length - 2);
+}
  
 public string getCopyright()
 {

@@ -29,11 +29,11 @@ var router = express.Router();
 var _ = require('underscore');
 var db = require('../.././db.js');
 var middleware = require('../.././middleware.js')(db);
-var ctrl<#=firstUpper(_singleName)#> = require('../controllers/<#=firstUpper(_singleName)#>.controller.js');
+var ctrl<#=firstUpper(_singleName)#> = require('../controllers/<#=_singleName#>.controller.js');
 
 router
     .route('/')
-    .post(ctrl<#=firstUpper(_singleName)#>.add<#=firstUpper(_singleName)#>);
+    .post(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.add<#=firstUpper(_singleName)#>);
 router
     .route('/all')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>All);

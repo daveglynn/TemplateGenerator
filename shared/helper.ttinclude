@@ -151,13 +151,15 @@ public string getLastChars( string source,  int tail_length)
  
 public string firstUpper(string str)
 {
- 
     if (String.IsNullOrEmpty(str)) return str;
     if (str.Length == 1) return str.ToUpper();
     return str.Remove(1).ToUpper() + str.Substring(1);
- 
 }
 
+public string removeId(string str)
+{
+    return str.Remove(str.Length - 2);
+}
  
 public string getCopyright()
 {

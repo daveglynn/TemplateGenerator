@@ -301,15 +301,92 @@ export class ");
             #line hidden
             this.Write("Id, { headers: headers, search: this._commonService.getTokenAsParm() })\r\n        " +
                     "    .map(response => response.json())\r\n            .catch(error => Observable.th" +
-                    "row(error.json()))\r\n\r\n    }\r\n\r\n");
+                    "row(error.json()))\r\n\r\n    }\r\n  \t");
             
-            #line 101 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 100 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+ foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){
+            
+            #line default
+            #line hidden
+            this.Write("\r\n/******************************************************************************" +
+                    "************************\r\n Get ");
+            
+            #line 105 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write(" records by ");
+            
+            #line 105 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
+            
+            #line default
+            #line hidden
+            this.Write(" \r\n******************************************************************************" +
+                    "************************/\r\n\tget");
+            
+            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
+            
+            #line default
+            #line hidden
+            this.Write("By");
+            
+            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
+            
+            #line default
+            #line hidden
+            this.Write(" = function (");
+            
+            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
+            
+            #line default
+            #line hidden
+            this.Write(", filter?) {\r\n\r\n\t\tvar parms = {};\r\n\t\tif (filter && filter.view) {\r\n\t\t\tparms[\'view" +
+                    "\'] = filter.view;\r\n\t\t}\r\n    \r\n\t\tconst headers = new Headers({ \'Content-Type\': \'a" +
+                    "pplication/json\' });\r\n\t\treturn this._http.get(this._url + \"/");
+            
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            
+            #line default
+            #line hidden
+            this.Write("/");
+            
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
+            
+            #line default
+            #line hidden
+            this.Write("/\" + ");
+            
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
+            
+            #line default
+            #line hidden
+            this.Write(", { search: this._commonService.setParms(parms) })\r\n\r\n\t\t\t.map(res => res.json())\r" +
+                    "\n\t\t\t.catch(error => Observable.throw(error.json()))\r\n\t}\t\r\n     \r\n");
+            
+            #line 121 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+}}
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 102 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 124 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  if ((_singleName == "user") || (_singleName == "item")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
@@ -321,7 +398,7 @@ export class ");
             #line default
             #line hidden
             
-            #line 109 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 131 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -488,9 +565,15 @@ public string getLastChars( string source,  int tail_length)
  
 public string firstUpper(string str)
 {
-    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
+    if (String.IsNullOrEmpty(str)) return str;
+    if (str.Length == 1) return str.ToUpper();
+    return str.Remove(1).ToUpper() + str.Substring(1);
 }
 
+public string removeId(string str)
+{
+    return str.Remove(str.Length - 2);
+}
  
 public string getCopyright()
 {

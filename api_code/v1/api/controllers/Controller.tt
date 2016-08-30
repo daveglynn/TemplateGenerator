@@ -30,7 +30,6 @@ var constants = require('../.././shared/constant.shared');
 var helpers = require('../.././shared/helpers.shared');
 var common = require('./extensions/common.extension');
 var extension = require('./extensions/<#=_singleName#>.extension');
-var controller = "user";
 var Sequelize = require('sequelize');
 <# if (_singleName == "user")  { #> 
 /******************************************************************************************************
@@ -192,6 +191,33 @@ module.exports.delete<#=firstUpper(_singleName)#> = function(req, res) {
         res.status(500).json(err);
     });
 };
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+
+/******************************************************************************************************
+ Get <#=firstUpper(_singleName)#> records by <#=firstUpper(BaseColumnName)#> 
+******************************************************************************************************/
+module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> = function (req, res) {
+
+    // builds clause
+    var where = {};
+    where = extension.setClause<#=firstUpper(BaseColumnName)#>(req, where);
+    where = extension.setClauseQueryView(req.query, where);
+
+    var attributes = common.excludeAttributes();
+	  
+    //find and return the records 
+    db.<#=_singleName#>.findAll({
+        attributes: attributes,
+        where: where
+    }).then(function (<#=_pluralName#>) {
+        res.json(<#=_pluralName#>);
+    }, function (err) {
+        res.status(500).json(err);
+    });
+};
+<#}}#>
 
 <# var _nongenerated = ""; #>
 <# if (_singleName == "item")  { 

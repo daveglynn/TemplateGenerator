@@ -97,6 +97,28 @@ export class <#=firstUpper(_singleName)#>Service {
             .catch(error => Observable.throw(error.json()))
 
     }
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+
+/******************************************************************************************************
+ Get <#=firstUpper(_singleName)#> records by <#=firstUpper(BaseColumnName)#> 
+******************************************************************************************************/
+	get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> = function (<#=BaseColumnName#>, filter?) {
+
+		var parms = {};
+		if (filter && filter.view) {
+			parms['view'] = filter.view;
+		}
+    
+		const headers = new Headers({ 'Content-Type': 'application/json' });
+		return this._http.get(this._url + "/<#=_singleName#>/<#=removeId(BaseColumnName)#>/" + <#=BaseColumnName#>, { search: this._commonService.setParms(parms) })
+
+			.map(res => res.json())
+			.catch(error => Observable.throw(error.json()))
+	}	
+     
+<#}}#>
 
 <# var _nongenerated = ""; #>
 <# if ((_singleName == "user") || (_singleName == "item")) { 
