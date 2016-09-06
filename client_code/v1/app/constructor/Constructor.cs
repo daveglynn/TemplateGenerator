@@ -22,9 +22,9 @@ namespace TemplateGenerator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Router : RouterBase
+    public partial class Constructor : ConstructorBase
     {
 #line hidden
         /// <summary>
@@ -46,7 +46,7 @@ namespace TemplateGenerator
             this.Write("\r\n/******************************************************************************" +
                     "************************\r\n \r\n ");
             
-            #line 19 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 19 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(getCopyright()));
             
             #line default
@@ -56,165 +56,85 @@ namespace TemplateGenerator
 ******************************************************************************************************/
 
 /******************************************************************************************************
- router
+ class layer
 ******************************************************************************************************/
 ""use strict"";
-var express = require('express'), app = express();
-var router = express.Router();
-var _ = require('underscore');
-var db = require('../.././db.js');
-var middleware = require('../.././middleware.js')(db);
-var ctrl");
+export class ");
             
-            #line 32 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 27 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write(" = require(\'../controllers/");
+            this.Write(" {\r\n\tconstructor( \r\n\t");
             
-            #line 32 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
-            
-            #line default
-            #line hidden
-            this.Write(".controller.js\');\r\n\r\nrouter\r\n    .route(\'/\')\r\n    .post(middleware.requireAuthent" +
-                    "ication, middleware.requireAuthorisation, ctrl");
-            
-            #line 36 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            #line 29 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+var myCount=0;
             
             #line default
             #line hidden
-            this.Write(".add");
+            this.Write("\t");
             
-            #line 36 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\nrouter\r\n    .route(\'/all\')\r\n    .get(middleware.requireAuthentication, middle" +
-                    "ware.requireAuthorisation, ctrl");
-            
-            #line 39 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(".get");
-            
-            #line 39 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
-            
-            #line default
-            #line hidden
-            this.Write("All);\r\nrouter\r\n    .route(\'/:id\')\r\n    .get(middleware.requireAuthentication, mid" +
-                    "dleware.requireAuthorisation, ctrl");
-            
-            #line 42 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(".get");
-            
-            #line 42 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write("ById);\r\nrouter\r\n    .route(\'/:id\')\r\n    .put(middleware.requireAuthentication, mi" +
-                    "ddleware.requireAuthorisation, ctrl");
-            
-            #line 45 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(".update");
-            
-            #line 45 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\nrouter\r\n    .route(\'/:id\')\r\n    .delete(middleware.requireAuthentication, mid" +
-                    "dleware.requireAuthorisation, ctrl");
-            
-            #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(".delete");
-            
-            #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n\r\n\t");
-            
-            #line 50 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 30 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
  foreach(DataRow row in GetColumnRow(_pluralName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-	if(getIDfields(BaseColumnName,false,false)){
+	 var DataType = row[(int)ColumnInfo.DataType].ToString();
+	if(allowFields(BaseColumnName,false,true,false,false)){
             
             #line default
             #line hidden
-            this.Write("\r\nrouter\r\n    .route(\'/");
             
-            #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
+            #line 33 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+if(myCount> 0){
             
             #line default
             #line hidden
-            this.Write("/:");
+            this.Write("\t,");
             
-            #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("public ");
+            
+            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
-            this.Write("\')\r\n    .get(middleware.requireAuthentication, middleware.requireAuthorisation, c" +
-                    "trl");
+            this.Write("?: ");
             
-            #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(".get");
-            
-            #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
+            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(getCsharpType(DataType)));
             
             #line default
             #line hidden
-            this.Write("By");
+            this.Write("\r\n\t");
             
-            #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
+            #line 35 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+myCount++;
             
             #line default
             #line hidden
-            this.Write(");\r\n");
+            this.Write(" ");
             
-            #line 57 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 36 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
 }}
             
             #line default
             #line hidden
+            this.Write(" ) { }\r\n}\r\n    \r\n");
             
-            #line 58 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 40 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 59 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
- if ( (_singleName == "user") ) { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
+            #line 41 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+ if ((_singleName == "user") || (_singleName == "item")  ) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\constructor\\nongenerated\\"+ _singleName +".ts";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }
@@ -224,16 +144,16 @@ var ctrl");
             #line default
             #line hidden
             
-            #line 66 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
+            #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
             #line hidden
-            this.Write("\r\nmodule.exports = router");
+            this.Write("\t\r\n\t\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\..\..\..\..\shared\helper.ttinclude"
+        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\..\..\..\..\shared\helper.ttinclude"
 
  
 
@@ -270,7 +190,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\..\..\..\..\shared\helper.ttinclude"
+        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -435,7 +355,7 @@ public string getCopyright()
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class RouterBase
+    public class ConstructorBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

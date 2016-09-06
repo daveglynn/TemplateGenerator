@@ -10,11 +10,11 @@ namespace TemplateGenerator
         static void Main(string[] args)
         {
 
-           // callGenerateApi("C:\\temp\\");
-           // callGenerateClient("C:\\temp\\");
+         //  callGenerateApi("C:\\temp\\");
+         // callGenerateClient("C:\\temp\\");
 
-            callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-            callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
+           callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+           callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
 
         }
 
@@ -64,9 +64,15 @@ namespace TemplateGenerator
             callGeneratorService(directory + "master\\items\\", "item", "items", false);
             callGeneratorService(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
+            callGeneratorConstructor(directory + "security\\users\\", "user", "users", false);
+            callGeneratorConstructor(directory + "security\\tenants\\", "tenant", "tenants", false);
+            callGeneratorConstructor(directory + "master\\profiles\\", "profile", "profiles", false);
+            callGeneratorConstructor(directory + "master\\languages\\", "language", "languages", false);
+            callGeneratorConstructor(directory + "master\\lists\\", "list", "lists", false);
+            callGeneratorConstructor(directory + "master\\items\\", "item", "items", false);
+            callGeneratorConstructor(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
+
             //callGeneratorService(directory + "todos\\", "todo", "todos", false);
-
-
             // callGeneratorService(directory + "order\\", "order", "orders", true);
             //  callGeneratorService(directory + "list\\", "list", "lists", false);
             //  callGeneratorService(directory + "item\\", "item", "items", false);
@@ -103,6 +109,13 @@ namespace TemplateGenerator
             var result = service.TransformText();
             File.WriteAllText(path, result);
         }
-
+        static void callGeneratorConstructor(string directory, string singleName, string pluralName, bool tenantRequired)
+        {
+            string path = @directory + singleName + ".ts";
+            var constructor = new Constructor("TemplateGenerator", singleName, pluralName, false);
+            var result = constructor.TransformText();
+            File.WriteAllText(path, result);
+        }
+        
     }
 }

@@ -47,8 +47,16 @@ router
     .route('/:id')
     .delete(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.delete<#=firstUpper(_singleName)#>);
 
+	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+
+router
+    .route('/<#=removeId(BaseColumnName)#>/:<#=BaseColumnName#>')
+    .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#>);
+<#}}#>
 <# var _nongenerated = ""; #>
-<# if ( (_singleName == "user") ||  (_singleName == "item") ) { 
+<# if ( (_singleName == "user") ) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

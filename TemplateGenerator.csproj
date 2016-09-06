@@ -81,6 +81,12 @@
       <DependentUpon>Router.tt</DependentUpon>
     </Compile>
     <Compile Include="api_code\v1\api\routes\RouterData.cs" />
+    <Compile Include="client_code\v1\app\constructor\ConstructorData.cs" />
+    <Compile Include="client_code\v1\app\constructor\Constructor.cs">
+      <DependentUpon>Constructor.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="client_code\v1\app\service\Service.cs">
       <DependentUpon>Service.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -89,14 +95,17 @@
     <Compile Include="client_code\v1\app\service\ServiceData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="api_code\v1\api\controllers\nongenerated\item.controller.js" />
     <None Include="api_code\v1\api\routes\Router.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Router.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
-    <Content Include="api_code\v1\api\routes\nongenerated\item.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\user.router.js" />
+    <None Include="client_code\v1\app\constructor\Constructor.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Constructor.cs</LastGenOutput>
+      <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
+    </None>
     <Content Include="client_code\v1\app\service\nongenerated\item.service.js" />
     <Content Include="client_code\v1\app\service\nongenerated\user.service.js" />
     <None Include="client_code\v1\app\service\Service.tt">
@@ -140,8 +149,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="api_code\v1\api\controllers\nongenerated\" />
     <Folder Include="client_code\v1\app\component\" />
     <Folder Include="client_code\v1\app\html\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="client_code\v1\app\constructor\nongenerated\item.ts" />
+    <TypeScriptCompile Include="client_code\v1\app\constructor\nongenerated\user.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
