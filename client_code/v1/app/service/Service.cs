@@ -574,6 +574,16 @@ public string removeId(string str)
 {
     return str.Remove(str.Length - 2);
 }
+
+public string getCsharpType(string str)
+{
+    if ( str == "System.Int32") return "number";
+    if ( str == "System.String") return "string";
+    if ( str == "System.Boolean") return "boolean";
+    if ( str == "System.DateTime") return "Date";
+ 
+	return str;
+}
  
 public string getCopyright()
 {
