@@ -13,7 +13,7 @@
 #>  <#@ import namespace="System.Collections.Generic" 
 #>  <#@ import namespace="System.IO" 
 #>  <#@ output extension="js" #>
-
+<# var _recIncludeCount = 0 ; #>
 /******************************************************************************************************
  
  <#=getCopyright()#>
@@ -97,10 +97,24 @@ module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
     where = extension.setClauseQuery(req.query, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
+	<# _recIncludeCount = 0 ; #>
+ 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+	{ 
+	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
+	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(_recIncludeCount == 0 ){#>
 
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+<#if(_recIncludeCount > 0 ) {#>
+
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+<#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
+<#}#>	
     db.<#=_singleName#>.findAll({
         attributes: attributes,
-        where: where
+        where: where <#if(_recIncludeCount > 0 ) {#>,
+		include: include <#}#>	
     }).then(function(<#=_pluralName#>) {
         res.json(<#=_pluralName#>);
     }, function(err) {
@@ -118,11 +132,25 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
     where = common.setClauseId(req, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
+	<# _recIncludeCount = 0 ; #>
+ 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+	{ 
+	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
+	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(_recIncludeCount == 0 ){#>
 
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+<#if(_recIncludeCount > 0 ) {#>
+
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+<#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
+<#}#>	
     //find and return the records 
     db.<#=_singleName#>.findOne({
         attributes: attributes,
-        where: where
+        where: where <#if(_recIncludeCount > 0 ) {#>,
+		include: include <#}#>	
     }).then(function(<#=_singleName#>) {
         if (!!<#=_singleName#>) {
             res.json(<#=_singleName#>.toPublicJSON());
@@ -206,11 +234,25 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
     where = extension.setClauseQueryView(req.query, where);
 
     var attributes = common.excludeAttributes();
-	  
+	<# _recIncludeCount = 0 ; #>
+ 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+	{ 
+	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
+	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(_recIncludeCount == 0 ){#>
+
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+<#if(_recIncludeCount > 0 ) {#>
+
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+<#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
+<#}#>	
     //find and return the records 
     db.<#=_singleName#>.findAll({
         attributes: attributes,
-        where: where
+        where: where <#if(_recIncludeCount > 0 ) {#>,
+		include: include <#}#>	
     }).then(function (<#=_pluralName#>) {
         res.json(<#=_pluralName#>);
     }, function (err) {

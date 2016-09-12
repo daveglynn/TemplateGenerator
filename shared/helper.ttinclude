@@ -138,8 +138,24 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
  
    return false;
   
+}	
+ 
+public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+	 if (((columnName == "tenantId") && (includeTenant == false)) ||
+	    ((columnName == "roleId") || (columnName == "parentListId")) ||
+	    ((columnName == "id") && (includeId == false))  ) {
+	       return false;
+	    } else {
+		return true;
+	  }
+   }  
+ 
+   return false;
+  
 }	 
-
 public string getLastChars( string source,  int tail_length) 
 {
     {
