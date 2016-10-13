@@ -9,7 +9,7 @@ namespace TemplateGenerator
     {
         static void Main(string[] args)
         {
-
+             
            //callGenerateApi("C:\\temp\\backend\\");
           callGenerateClient("C:\\temp\\frontend\\");
 
