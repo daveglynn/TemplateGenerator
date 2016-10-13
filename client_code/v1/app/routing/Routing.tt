@@ -1,0 +1,65 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+  <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" 
+#>  <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" 
+#>  <#@ assembly name="System.Data" 
+#>  <#@ assembly name="..\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll"
+#>  <#@ include file="..\..\..\..\shared\helper.ttinclude" 
+#>  <#@ import namespace="Npgsql" 
+#>  <#@ import namespace="System.Data" 
+#>  <#@ import namespace="System.Globalization" 
+#>  <#@ import namespace="System.Collections.Generic" 
+#>  <#@ import namespace="System.IO" 
+#>  <#@ output extension="js" #>
+
+/******************************************************************************************************
+ 
+ <#=getCopyright()#>
+
+******************************************************************************************************/
+
+
+import { RouterModule  }    		  from '@angular/router';
+
+import { UserFormComponent } 		  from './user-form.component';
+import { UsersComponent }    		  from './users.component';
+import { PreventUnsavedChangesGuard } from '../../prevent-unsaved-changes-guard.service';
+
+export const usersRouting = RouterModule.forChild([
+	{ 
+		path: 'users/add', 
+		component: UserFormComponent,
+		canDeactivate: [ PreventUnsavedChangesGuard ]  
+    },
+    {
+        path: 'users/view/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+    {
+        path: 'users/edit/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+    {
+        path: 'users/delete/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+
+    { path: 'users', component: UsersComponent },
+]);
+
+<# var _nongenerated = ""; #>
+<# if ((_singleName == "user") || (_singleName == "item")) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\routing\\nongenerated\\"+ _singleName +".routing.js";
+     if (File.Exists(path)) {
+	  _nongenerated = File.ReadAllText(path); 
+	 }
+ 	}
+#>
+<#=_nongenerated#>	
+	
+}

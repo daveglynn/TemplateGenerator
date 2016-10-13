@@ -22,9 +22,9 @@ namespace TemplateGenerator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+    #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class Constructor : ConstructorBase
+    public partial class Routing : RoutingBase
     {
 #line hidden
         /// <summary>
@@ -46,7 +46,7 @@ namespace TemplateGenerator
             this.Write("\r\n/******************************************************************************" +
                     "************************\r\n \r\n ");
             
-            #line 19 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+            #line 19 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(getCopyright()));
             
             #line default
@@ -55,100 +55,49 @@ namespace TemplateGenerator
 
 ******************************************************************************************************/
 
-/******************************************************************************************************
- class layer
-******************************************************************************************************/
-""use strict"";
-export class ");
+
+import { RouterModule  }    		  from '@angular/router';
+
+import { UserFormComponent } 		  from './user-form.component';
+import { UsersComponent }    		  from './users.component';
+import { PreventUnsavedChangesGuard } from '../../prevent-unsaved-changes-guard.service';
+
+export const usersRouting = RouterModule.forChild([
+	{ 
+		path: 'users/add', 
+		component: UserFormComponent,
+		canDeactivate: [ PreventUnsavedChangesGuard ]  
+    },
+    {
+        path: 'users/view/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+    {
+        path: 'users/edit/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+    {
+        path: 'users/delete/:id',
+        component: UserFormComponent,
+        canDeactivate: [PreventUnsavedChangesGuard]
+    },
+
+    { path: 'users', component: UsersComponent },
+]);
+
+");
             
-            #line 27 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n\tconstructor( \r\n\t");
-            
-            #line 29 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-var myCount=0;
-            
-            #line default
-            #line hidden
-            this.Write("\t");
-            
-            #line 30 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
-	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
-	 var DataType = row[(int)ColumnInfo.DataType].ToString();
-	if(allowFields(BaseColumnName,false,true,false,false)){
-            
-            #line default
-            #line hidden
-            
-            #line 33 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-if(myCount> 0){
-            
-            #line default
-            #line hidden
-            this.Write("\t,");
-            
-            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-}
-            
-            #line default
-            #line hidden
-            this.Write("public ");
-            
-            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
-            
-            #line default
-            #line hidden
-            this.Write("?: ");
-            
-            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(getCsharpType(DataType)));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t");
-            
-            #line 35 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-if((BaseColumnName=="email") && (_singleName == "user")){
-            
-            #line default
-            #line hidden
-            this.Write("\t\t,public password?: string\r\n\t ");
-            
-            #line 37 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-}
-            
-            #line default
-            #line hidden
-            this.Write("\t");
-            
-            #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-myCount++;
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 39 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-}}
-            
-            #line default
-            #line hidden
-            this.Write(" ) { }\r\n}\r\n    \r\n");
-            
-            #line 43 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+            #line 25 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 44 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
- if ((_singleName == "user") || (_singleName == "item")  ) { 
-    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\constructor\\nongenerated\\"+ _singleName +".ts";
+            #line 26 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+ if ((_singleName == "user") || (_singleName == "item")) { 
+    string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\routing\\nongenerated\\"+ _singleName +".routing.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
 	 }
@@ -158,16 +107,16 @@ myCount++;
             #line default
             #line hidden
             
-            #line 51 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
+            #line 33 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
             #line hidden
-            this.Write("\t\r\n\t\r\n");
+            this.Write("\t\r\n\t\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\..\..\..\..\shared\helper.ttinclude"
+        #line 1 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\..\..\..\..\shared\helper.ttinclude"
 
  
 
@@ -204,7 +153,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\..\..\..\..\shared\helper.ttinclude"
+        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -385,7 +334,7 @@ public string getCopyright()
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class ConstructorBase
+    public class RoutingBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

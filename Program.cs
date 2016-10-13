@@ -72,6 +72,14 @@ namespace TemplateGenerator
             callGeneratorConstructor(directory + "master\\items\\", "item", "items", false);
             callGeneratorConstructor(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
+            callGeneratorRouting(directory + "security\\users\\", "user", "users", false);
+            callGeneratorRouting(directory + "security\\tenants\\", "tenant", "tenants", false);
+            callGeneratorRouting(directory + "master\\profiles\\", "profile", "profiles", false);
+            callGeneratorRouting(directory + "master\\languages\\", "language", "languages", false);
+            callGeneratorRouting(directory + "master\\lists\\", "list", "lists", false);
+            callGeneratorRouting(directory + "master\\items\\", "item", "items", false);
+            callGeneratorRouting(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
+
             //callGeneratorService(directory + "todos\\", "todo", "todos", false);
             // callGeneratorService(directory + "order\\", "order", "orders", true);
             //  callGeneratorService(directory + "list\\", "list", "lists", false);
@@ -116,6 +124,13 @@ namespace TemplateGenerator
             var result = constructor.TransformText();
             File.WriteAllText(path, result);
         }
-        
+        static void callGeneratorRouting(string directory, string singleName, string pluralName, bool tenantRequired)
+        {
+            string path = @directory + singleName + ".routing.ts";
+            var routing = new Routing("TemplateGenerator", singleName, pluralName, false);
+            var result = routing.TransformText();
+            File.WriteAllText(path, result);
+        }
+
     }
 }
