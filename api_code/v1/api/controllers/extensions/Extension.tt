@@ -26,6 +26,7 @@
 "use strict";
 var _ = require('underscore');
 var common = require('./common.extension');
+var constants = require('../../../shared/constant.shared');
 
 /******************************************************************************************************
  functions
@@ -44,6 +45,13 @@ module.exports.setPost = function (req, mode) {
     //add createdBy
     if (mode == 'C') {
 	<# if (_singleName == "user")  {#>	body.createdBy = null;
+  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+	if(getIDfields(BaseColumnName,false,false)){#>
+	if (body.<#=BaseColumnName#> == null) {
+			body.<#=BaseColumnName#> = constants.<#=BaseColumnName#>_Default.toString();
+		}
+    <#}}#>
 	<# } else { #> body.createdBy = common.modelUserId(req);<#}#>
 		
 	} else {

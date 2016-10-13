@@ -38,13 +38,13 @@ router
     .route('/all')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>All);
 router
-    .route('/:id')
+    .route('/:id(\\d+)/')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_singleName)#>ById);
 router
-    .route('/:id')
+    .route('/:id(\\d+)/')
     .put(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.update<#=firstUpper(_singleName)#>);
 router
-    .route('/:id')
+    .route('/:id(\\d+)/')
     .delete(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.delete<#=firstUpper(_singleName)#>);
 
 	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
@@ -52,7 +52,7 @@ router
 	if(getIDfields(BaseColumnName,false,false)){#>
 
 router
-    .route('/<#=removeId(BaseColumnName)#>/:<#=BaseColumnName#>')
+    .route('/<#=removeId(BaseColumnName)#>/:<#=BaseColumnName#>(\\d+)/')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#>);
 <#}}#>
 <# var _nongenerated = ""; #>

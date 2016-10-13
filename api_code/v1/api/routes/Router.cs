@@ -108,8 +108,8 @@ var ctrl");
             
             #line default
             #line hidden
-            this.Write("All);\r\nrouter\r\n    .route(\'/:id\')\r\n    .get(middleware.requireAuthentication, mid" +
-                    "dleware.requireAuthorisation, ctrl");
+            this.Write("All);\r\nrouter\r\n    .route(\'/:id(\\\\d+)/\')\r\n    .get(middleware.requireAuthenticati" +
+                    "on, middleware.requireAuthorisation, ctrl");
             
             #line 42 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
@@ -123,8 +123,8 @@ var ctrl");
             
             #line default
             #line hidden
-            this.Write("ById);\r\nrouter\r\n    .route(\'/:id\')\r\n    .put(middleware.requireAuthentication, mi" +
-                    "ddleware.requireAuthorisation, ctrl");
+            this.Write("ById);\r\nrouter\r\n    .route(\'/:id(\\\\d+)/\')\r\n    .put(middleware.requireAuthenticat" +
+                    "ion, middleware.requireAuthorisation, ctrl");
             
             #line 45 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
@@ -138,8 +138,8 @@ var ctrl");
             
             #line default
             #line hidden
-            this.Write(");\r\nrouter\r\n    .route(\'/:id\')\r\n    .delete(middleware.requireAuthentication, mid" +
-                    "dleware.requireAuthorisation, ctrl");
+            this.Write(");\r\nrouter\r\n    .route(\'/:id(\\\\d+)/\')\r\n    .delete(middleware.requireAuthenticati" +
+                    "on, middleware.requireAuthorisation, ctrl");
             
             #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
@@ -176,8 +176,8 @@ var ctrl");
             
             #line default
             #line hidden
-            this.Write("\')\r\n    .get(middleware.requireAuthentication, middleware.requireAuthorisation, c" +
-                    "trl");
+            this.Write("(\\\\d+)/\')\r\n    .get(middleware.requireAuthentication, middleware.requireAuthorisa" +
+                    "tion, ctrl");
             
             #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
@@ -378,8 +378,24 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
  
    return false;
   
+}	
+ 
+public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+	 if (((columnName == "tenantId") && (includeTenant == false)) ||
+	    ((columnName == "roleId") || (columnName == "parentListId")) ||
+	    ((columnName == "id") && (includeId == false))  ) {
+	       return false;
+	    } else {
+		return true;
+	  }
+   }  
+ 
+   return false;
+  
 }	 
-
 public string getLastChars( string source,  int tail_length) 
 {
     {

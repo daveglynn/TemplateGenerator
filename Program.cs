@@ -10,18 +10,18 @@ namespace TemplateGenerator
         static void Main(string[] args)
         {
 
-          // callGenerateApi("C:\\temp\\");
-         // callGenerateClient("C:\\temp\\");
+           //callGenerateApi("C:\\temp\\backend\\");
+          callGenerateClient("C:\\temp\\frontend\\");
 
-          callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
+          //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
 
         }
 
         static void callGenerateApi(string directory)
         {
         
-            callGeneratorController(directory + "controllers\\","user", "users", false);
+            callGeneratorController(directory + "controllers\\","user", "users", true);
             callGeneratorController(directory + "controllers\\", "tenant", "tenants", false);
             callGeneratorController(directory + "controllers\\", "todo", "todos", true);
             callGeneratorController(directory + "controllers\\", "order", "orders", true);
@@ -83,14 +83,14 @@ namespace TemplateGenerator
         static void callGeneratorController(string directory, string singleName, string pluralName, bool tenantRequired) 
         {
             string path = @directory + singleName + ".controller.js";
-            var controller = new Controller("TemplateGenerator",singleName, pluralName, false);
+            var controller = new Controller("TemplateGenerator",singleName, pluralName, tenantRequired);
             var result = controller.TransformText();
             File.WriteAllText(path, result);
         }
          static void callGeneratorExtension(string directory, string singleName, string pluralName, bool tenantRequired)
         {
             string path = @directory + singleName + ".extension.js";
-            var extension = new Extension("TemplateGenerator", singleName, pluralName, false);
+            var extension = new Extension("TemplateGenerator", singleName, pluralName, tenantRequired);
             var result =   extension.TransformText();
             File.WriteAllText(path, result);
         

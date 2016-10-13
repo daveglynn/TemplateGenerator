@@ -74,7 +74,7 @@ module.exports.logout = function(req, res) {
 ******************************************************************************************************/
 module.exports.add<#=firstUpper(_singleName)#> = function(req, res) {
 
-    // pick appropiate fields<#if (_tenantRequired == true){#> and set tenant  <# } #> 
+    // pick appropiate fields<#if (_tenantRequired == true){#> tenant will be set to default  <# } #> 
     var body = extension.setPost(req, 'C');
                
     db.<#=_singleName#>.create(body).then(function(<#=_singleName#>) {
@@ -178,6 +178,7 @@ module.exports.update<#=firstUpper(_singleName)#> = function(req, res) {
     where = common.setClauseId(req, where);
     <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
 
+
     // find record on database, update record and return to client
     db.<#=_singleName#>.findOne({
         where: where
@@ -206,6 +207,7 @@ module.exports.delete<#=firstUpper(_singleName)#> = function(req, res) {
     where = common.setClauseId(req, where);
     <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
 
+
     // delete record on database
     db.<#=_singleName#>.destroy({
         where: where
@@ -232,6 +234,8 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
     var where = {};
     where = extension.setClause<#=firstUpper(BaseColumnName)#>(req, where);
     where = extension.setClauseQueryView(req.query, where);
+    <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
+
 
     var attributes = common.excludeAttributes();
 	<# _recIncludeCount = 0 ; #>
