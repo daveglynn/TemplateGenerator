@@ -15,7 +15,7 @@ namespace TemplateGenerator
 
           //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
           //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
-
+           
         }
 
         static void callGenerateApi(string directory)
