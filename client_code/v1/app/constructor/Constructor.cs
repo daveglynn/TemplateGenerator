@@ -106,7 +106,7 @@ if(myCount> 0){
             this.Write("?: ");
             
             #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(getCsharpType(DataType)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(getCsharpType(DataType,true)));
             
             #line default
             #line hidden
@@ -351,12 +351,13 @@ public string removeId(string str)
     return str.Remove(str.Length - 2);
 }
 
-public string getCsharpType(string str)
+public string getCsharpType(string str,bool convertDateToString)
 {
     if ( str == "System.Int32") return "number";
     if ( str == "System.String") return "string";
     if ( str == "System.Boolean") return "boolean";
-    if ( str == "System.DateTime") return "Date";
+    if (( str == "System.DateTime") && (convertDateToString == true)) return "string";
+    if (( str == "System.DateTime") && (convertDateToString == false)) return "Date";
  
 	return str;
 }

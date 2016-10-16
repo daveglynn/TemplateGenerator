@@ -11,11 +11,11 @@ namespace TemplateGenerator
         {
              
            //callGenerateApi("C:\\temp\\backend\\");
-          callGenerateClient("C:\\temp\\frontend\\");
+          //callGenerateClient("C:\\temp\\frontend\\");
 
           //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client\\v1\\app\\");
-           
+          callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client-rc5\\app\\");
+
         }
 
         static void callGenerateApi(string directory)
@@ -72,13 +72,13 @@ namespace TemplateGenerator
             callGeneratorConstructor(directory + "master\\items\\", "item", "items", false);
             callGeneratorConstructor(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
-            callGeneratorRouting(directory + "security\\users\\", "user", "users", false);
-            callGeneratorRouting(directory + "security\\tenants\\", "tenant", "tenants", false);
-            callGeneratorRouting(directory + "master\\profiles\\", "profile", "profiles", false);
-            callGeneratorRouting(directory + "master\\languages\\", "language", "languages", false);
-            callGeneratorRouting(directory + "master\\lists\\", "list", "lists", false);
-            callGeneratorRouting(directory + "master\\items\\", "item", "items", false);
-            callGeneratorRouting(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
+              callGeneratorRouting(directory + "security\\users\\", "user", "users", false);
+         //   callGeneratorRouting(directory + "security\\tenants\\", "tenant", "tenants", false);
+         //   callGeneratorRouting(directory + "master\\profiles\\", "profile", "profiles", false);
+         //   callGeneratorRouting(directory + "master\\languages\\", "language", "languages", false);
+         //   callGeneratorRouting(directory + "master\\lists\\", "list", "lists", false);
+         //   callGeneratorRouting(directory + "master\\items\\", "item", "items", false);
+         //   callGeneratorRouting(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
             //callGeneratorService(directory + "todos\\", "todo", "todos", false);
             // callGeneratorService(directory + "order\\", "order", "orders", true);
@@ -126,7 +126,7 @@ namespace TemplateGenerator
         }
         static void callGeneratorRouting(string directory, string singleName, string pluralName, bool tenantRequired)
         {
-            string path = @directory + singleName + ".routing.ts";
+            string path = @directory + pluralName + ".routing.ts";
             var routing = new Routing("TemplateGenerator", singleName, pluralName, false);
             var result = routing.TransformText();
             File.WriteAllText(path, result);

@@ -20,40 +20,42 @@
 
 ******************************************************************************************************/
 
+/******************************************************************************************************
+ routing layer
+******************************************************************************************************/
 
 import { RouterModule  }    		  from '@angular/router';
-
-import { UserFormComponent } 		  from './user-form.component';
-import { UsersComponent }    		  from './users.component';
+import { <#=firstUpper(_singleName)#>FormComponent } from './<#=_singleName#>-form.component';
+import { <#=firstUpper(_pluralName)#>Component } from './<#=_pluralName#>.component';
 import { PreventUnsavedChangesGuard } from '../../prevent-unsaved-changes-guard.service';
 
-export const usersRouting = RouterModule.forChild([
+export const <#=_pluralName#>Routing = RouterModule.forChild([
 	{ 
-		path: 'users/add', 
-		component: UserFormComponent,
+		path: '<#=_pluralName#>/add', 
+		component: <#=firstUpper(_singleName)#>FormComponent,
 		canDeactivate: [ PreventUnsavedChangesGuard ]  
     },
     {
-        path: 'users/view/:id',
-        component: UserFormComponent,
+        path: '<#=_pluralName#>/view/:id',
+        component: <#=firstUpper(_singleName)#>FormComponent,
         canDeactivate: [PreventUnsavedChangesGuard]
     },
     {
-        path: 'users/edit/:id',
-        component: UserFormComponent,
+        path: '<#=_pluralName#>/edit/:id',
+        component: <#=firstUpper(_singleName)#>FormComponent,
         canDeactivate: [PreventUnsavedChangesGuard]
     },
     {
-        path: 'users/delete/:id',
-        component: UserFormComponent,
+        path: '<#=_pluralName#>/delete/:id',
+        component: <#=firstUpper(_singleName)#>FormComponent,
         canDeactivate: [PreventUnsavedChangesGuard]
     },
 
-    { path: 'users', component: UsersComponent },
+    { path: '<#=_pluralName#>', component: UsersComponent },
 ]);
 
 <# var _nongenerated = ""; #>
-<# if ((_singleName == "user") || (_singleName == "item")) { 
+<# if ((_singleName == "user")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\routing\\nongenerated\\"+ _singleName +".routing.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
@@ -61,5 +63,3 @@ export const usersRouting = RouterModule.forChild([
  	}
 #>
 <#=_nongenerated#>	
-	
-}

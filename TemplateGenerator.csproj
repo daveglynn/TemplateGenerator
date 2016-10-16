@@ -115,6 +115,7 @@
     <None Include="client_code\v1\app\routing\Routing.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Routing.cs</LastGenOutput>
+      <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
     <Content Include="client_code\v1\app\service\nongenerated\item.service.js" />
     <Content Include="client_code\v1\app\service\nongenerated\user.service.js" />

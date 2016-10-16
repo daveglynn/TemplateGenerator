@@ -55,48 +55,124 @@ namespace TemplateGenerator
 
 ******************************************************************************************************/
 
+/******************************************************************************************************
+ routing layer
+******************************************************************************************************/
 
 import { RouterModule  }    		  from '@angular/router';
-
-import { UserFormComponent } 		  from './user-form.component';
-import { UsersComponent }    		  from './users.component';
-import { PreventUnsavedChangesGuard } from '../../prevent-unsaved-changes-guard.service';
-
-export const usersRouting = RouterModule.forChild([
-	{ 
-		path: 'users/add', 
-		component: UserFormComponent,
-		canDeactivate: [ PreventUnsavedChangesGuard ]  
-    },
-    {
-        path: 'users/view/:id',
-        component: UserFormComponent,
-        canDeactivate: [PreventUnsavedChangesGuard]
-    },
-    {
-        path: 'users/edit/:id',
-        component: UserFormComponent,
-        canDeactivate: [PreventUnsavedChangesGuard]
-    },
-    {
-        path: 'users/delete/:id',
-        component: UserFormComponent,
-        canDeactivate: [PreventUnsavedChangesGuard]
-    },
-
-    { path: 'users', component: UsersComponent },
-]);
-
-");
+import { ");
             
-            #line 25 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            #line 28 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write("FormComponent } from \'./");
+            
+            #line 28 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            
+            #line default
+            #line hidden
+            this.Write("-form.component\';\r\nimport { ");
+            
+            #line 29 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
+            
+            #line default
+            #line hidden
+            this.Write("Component } from \'./");
+            
+            #line 29 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write(".component\';\r\nimport { PreventUnsavedChangesGuard } from \'../../prevent-unsaved-c" +
+                    "hanges-guard.service\';\r\n\r\nexport const ");
+            
+            #line 32 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("Routing = RouterModule.forChild([\r\n\t{ \r\n\t\tpath: \'");
+            
+            #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("/add\', \r\n\t\tcomponent: ");
+            
+            #line 35 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write("FormComponent,\r\n\t\tcanDeactivate: [ PreventUnsavedChangesGuard ]  \r\n    },\r\n    {\r" +
+                    "\n        path: \'");
+            
+            #line 39 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("/view/:id\',\r\n        component: ");
+            
+            #line 40 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write("FormComponent,\r\n        canDeactivate: [PreventUnsavedChangesGuard]\r\n    },\r\n    " +
+                    "{\r\n        path: \'");
+            
+            #line 44 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("/edit/:id\',\r\n        component: ");
+            
+            #line 45 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write("FormComponent,\r\n        canDeactivate: [PreventUnsavedChangesGuard]\r\n    },\r\n    " +
+                    "{\r\n        path: \'");
+            
+            #line 49 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("/delete/:id\',\r\n        component: ");
+            
+            #line 50 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
+            
+            #line default
+            #line hidden
+            this.Write("FormComponent,\r\n        canDeactivate: [PreventUnsavedChangesGuard]\r\n    },\r\n\r\n  " +
+                    "  { path: \'");
+            
+            #line 54 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
+            
+            #line default
+            #line hidden
+            this.Write("\', component: UsersComponent },\r\n]);\r\n\r\n");
+            
+            #line 57 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 26 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
- if ((_singleName == "user") || (_singleName == "item")) { 
+            #line 58 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+ if ((_singleName == "user")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\routing\\nongenerated\\"+ _singleName +".routing.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
@@ -107,12 +183,12 @@ export const usersRouting = RouterModule.forChild([
             #line default
             #line hidden
             
-            #line 33 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
+            #line 65 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\Routing.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
             #line hidden
-            this.Write("\t\r\n\t\r\n}");
+            this.Write("\t\r\n");
             return this.GenerationEnvironment.ToString();
         }
         

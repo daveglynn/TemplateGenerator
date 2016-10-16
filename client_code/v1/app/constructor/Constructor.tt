@@ -31,7 +31,7 @@ export class <#=firstUpper(_singleName)#> {
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	 var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,true,false,false)){#><#if(myCount> 0){#>
-	,<#}#>public <#=BaseColumnName#>?: <#=getCsharpType(DataType)#>
+	,<#}#>public <#=BaseColumnName#>?: <#=getCsharpType(DataType,true)#>
 	<#if((BaseColumnName=="email") && (_singleName == "user")){#>
 		,public password?: string
 	 <#}#>
