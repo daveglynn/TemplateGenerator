@@ -97,23 +97,28 @@ module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
     where = extension.setClauseQuery(req.query, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
+
+    var order = extension.setClauseOrder(req); 	
+
 	<# _recIncludeCount = 0 ; #>
  	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
 	<#if(BaseColumnName2 != "roleId" ){#>
+	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 
-	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}<#}#>
 <#if(_recIncludeCount > 0 ) {#>
 
-				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}  <#}#>
 <#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
 <#}#>	
     db.<#=_singleName#>.findAll({
         attributes: attributes,
-        where: where <#if(_recIncludeCount > 0 ) {#>,
+        where: where ,
+		order: [order]<#if(_recIncludeCount > 0 ) {#>,
 		include: include <#}#>	
     }).then(function(<#=_pluralName#>) {
         res.json(<#=_pluralName#>);
@@ -138,12 +143,13 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
 	<#if(BaseColumnName2 != "roleId" ){#>
+	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 
-	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}<#}#>
 <#if(_recIncludeCount > 0 ) {#>
 
-				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}  <#}#>
 <#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
 <#}#>	
     //find and return the records 
@@ -238,24 +244,29 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 
 
     var attributes = common.excludeAttributes();
+
+	var order = extension.setClauseOrder(req); 	
+
 	<# _recIncludeCount = 0 ; #>
  	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
 	<#if(BaseColumnName2 != "roleId" ){#>
+	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 
-	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}<#}#>
+	var include = [{ model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}<#}#>
 <#if(_recIncludeCount > 0 ) {#>
 
-				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: ['name']}  <#}#>
+				   ,{model: db.<#=removeId(BaseColumnName2)#>,attributes: [<#=attributesList#>]}  <#}#>
 <#_recIncludeCount++;#> <#}}#><#}#><#if(_recIncludeCount > 0 ) {#>]; 	
 <#}#>	
     //find and return the records 
     db.<#=_singleName#>.findAll({
         attributes: attributes,
-        where: where <#if(_recIncludeCount > 0 ) {#>,
+        where: where,
+		order: [order]<#if(_recIncludeCount > 0 ) {#>,
 		include: include <#}#>	
     }).then(function (<#=_pluralName#>) {
         res.json(<#=_pluralName#>);
@@ -266,7 +277,7 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 <#}}#>
 
 <# var _nongenerated = ""; #>
-<# if (_singleName == "item")  { 
+<# if (_singleName == "list")  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

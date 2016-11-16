@@ -33,7 +33,7 @@ var ctrl<#=firstUpper(_singleName)#> = require('../controllers/<#=_singleName#>.
 
 router
     .route('/')
-    .post(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.add<#=firstUpper(_singleName)#>);
+    .post(<# if ( (_singleName != "user") ) {#> middleware.requireAuthentication, middleware.requireAuthorisation,<#}#> ctrl<#=firstUpper(_singleName)#>.add<#=firstUpper(_singleName)#>);
 router
     .route('/all')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>All);
@@ -56,7 +56,7 @@ router
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#>);
 <#}}#>
 <# var _nongenerated = ""; #>
-<# if ( (_singleName == "user") ) { 
+<# if ( (_singleName == "user") || (_singleName == "list")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

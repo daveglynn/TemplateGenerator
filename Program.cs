@@ -10,11 +10,11 @@ namespace TemplateGenerator
         static void Main(string[] args)
         {
              
-           //callGenerateApi("C:\\temp\\backend\\");
+          //callGenerateApi("C:\\temp\\backend\\");
           //callGenerateClient("C:\\temp\\frontend\\");
 
-          //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client-rc5\\app\\");
+          callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client-rc5\\app\\");
 
         }
 

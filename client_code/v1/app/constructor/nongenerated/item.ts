@@ -1,6 +1,3 @@
-﻿export class DropDownParent {
-    constructor(public parentId: number, public name: string) { }
-}
-export class DropDownChild {
-    constructor(public childId: number, public parentId: number, public name: string) { }
+﻿export class DropDownItem {
+    constructor(public id: number, public listId: number, public parentId: number, public name: string, public code: string, public ruleBookId: number) { }
 }

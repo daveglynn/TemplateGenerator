@@ -106,6 +106,8 @@
       <LastGenOutput>Router.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
+    <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
+    <Content Include="api_code\v1\api\routes\nongenerated\list.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\user.router.js" />
     <None Include="client_code\v1\app\constructor\Constructor.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -160,7 +162,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="api_code\v1\api\controllers\nongenerated\" />
     <Folder Include="client_code\v1\app\component\" />
     <Folder Include="client_code\v1\app\html\" />
     <Folder Include="client_code\v1\app\routing\nongenerated\" />

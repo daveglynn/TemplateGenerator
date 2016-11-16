@@ -393,15 +393,72 @@ _recCount++;
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n");
+            this.Write(@"
+
+module.exports.setClauseOrder = function (req) {
+ 
+	// for multi columns
+    // order = [""col1"", ""DESC""],
+    //		   [""col2"", ""ASC""]
+
+    var order = [];
+    var orderDir = ""ASC""
+    var orderBy = ""id""
+
+    if (req.query.hasOwnProperty('orderBy') && orderBy.length > 0) {
+        if ((req.body.hasOwnProperty(req.query.orderBy)) 
+		");
             
-            #line 129 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+ foreach(DataRow row in GetColumnRow(_pluralName))  
+		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t|| (req.query.orderBy == \'");
+            
+            #line 143 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("\')\r\n\t\t");
+            
+            #line 144 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(@" 
+		){
+
+            orderBy = req.query.orderBy
+
+            if (req.query.hasOwnProperty('orderDir') && orderDir.length > 0) {
+                if ((req.body.hasOwnProperty(req.query.orderDir)) ||
+                    (req.query.orderDir == 'ASC') ||
+                    (req.query.orderDir == 'DESC')) {
+                      orderDir = req.query.orderDir
+                }
+            }
+        }
+    }
+
+    order = [orderBy, orderDir]
+
+    return order;
+
+};
+
+");
+            
+            #line 165 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 130 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 166 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  if ((_singleName == "item") ) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\"+ _singleName +".extension.js";
      if (File.Exists(path)) {
@@ -413,7 +470,7 @@ _recCount++;
             #line default
             #line hidden
             
-            #line 137 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 173 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -606,12 +663,13 @@ public string removeId(string str)
     return str.Remove(str.Length - 2);
 }
 
-public string getCsharpType(string str)
+public string getCsharpType(string str,bool convertDateToString)
 {
     if ( str == "System.Int32") return "number";
     if ( str == "System.String") return "string";
     if ( str == "System.Boolean") return "boolean";
-    if ( str == "System.DateTime") return "Date";
+    if (( str == "System.DateTime") && (convertDateToString == true)) return "string";
+    if (( str == "System.DateTime") && (convertDateToString == false)) return "Date";
  
 	return str;
 }
