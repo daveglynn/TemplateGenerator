@@ -226,7 +226,7 @@ var ctrl");
             #line hidden
             
             #line 59 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
- if ( (_singleName == "user") || (_singleName == "list")) { 
+ if ( (_singleName == "user") || (_singleName == "list") || (_singleName == "profile") || (_singleName == "language")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

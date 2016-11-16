@@ -14,7 +14,7 @@ namespace TemplateGenerator
           //callGenerateClient("C:\\temp\\frontend\\");
 
           callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\client-rc5\\app\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
 
         }
 
@@ -72,7 +72,7 @@ namespace TemplateGenerator
             callGeneratorConstructor(directory + "master\\items\\", "item", "items", false);
             callGeneratorConstructor(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
-              callGeneratorRouting(directory + "security\\users\\", "user", "users", false);
+         //     callGeneratorRouting(directory + "security\\users\\", "user", "users", false);
          //   callGeneratorRouting(directory + "security\\tenants\\", "tenant", "tenants", false);
          //   callGeneratorRouting(directory + "master\\profiles\\", "profile", "profiles", false);
          //   callGeneratorRouting(directory + "master\\languages\\", "language", "languages", false);

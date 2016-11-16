@@ -277,7 +277,7 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 <#}}#>
 
 <# var _nongenerated = ""; #>
-<# if (_singleName == "list")  { 
+<# if ((_singleName == "list") || (_singleName == "profile") || (_singleName == "language"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

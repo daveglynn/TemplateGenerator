@@ -106,8 +106,12 @@
       <LastGenOutput>Router.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
+    <Content Include="api_code\v1\api\controllers\nongenerated\language.controller.js" />
     <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
+    <Content Include="api_code\v1\api\controllers\nongenerated\profile.controller.js" />
+    <Content Include="api_code\v1\api\routes\nongenerated\language.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\list.router.js" />
+    <Content Include="api_code\v1\api\routes\nongenerated\profile.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\user.router.js" />
     <None Include="client_code\v1\app\constructor\Constructor.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -119,7 +123,9 @@
       <LastGenOutput>Routing.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
-    <Content Include="client_code\v1\app\service\nongenerated\item.service.js" />
+    <Content Include="client_code\v1\app\service\nongenerated\language.service.js" />
+    <Content Include="client_code\v1\app\service\nongenerated\list.service.js" />
+    <Content Include="client_code\v1\app\service\nongenerated\profile.service.js" />
     <Content Include="client_code\v1\app\service\nongenerated\user.service.js" />
     <None Include="client_code\v1\app\service\Service.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

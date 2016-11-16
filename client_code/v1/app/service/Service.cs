@@ -388,7 +388,7 @@ export class ");
             #line hidden
             
             #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- if ((_singleName == "user") || (_singleName == "item")) { 
+ if ((_singleName == "user") ||  (_singleName == "list")  ||  (_singleName == "profile")  ||  (_singleName == "language")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
@@ -592,12 +592,13 @@ public string removeId(string str)
     return str.Remove(str.Length - 2);
 }
 
-public string getCsharpType(string str)
+public string getCsharpType(string str,bool convertDateToString)
 {
     if ( str == "System.Int32") return "number";
     if ( str == "System.String") return "string";
     if ( str == "System.Boolean") return "boolean";
-    if ( str == "System.DateTime") return "Date";
+    if (( str == "System.DateTime") && (convertDateToString == true)) return "string";
+    if (( str == "System.DateTime") && (convertDateToString == false)) return "Date";
  
 	return str;
 }

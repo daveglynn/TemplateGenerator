@@ -56,7 +56,7 @@ router
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#>);
 <#}}#>
 <# var _nongenerated = ""; #>
-<# if ( (_singleName == "user") || (_singleName == "list")) { 
+<# if ( (_singleName == "user") || (_singleName == "list") || (_singleName == "profile") || (_singleName == "language")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

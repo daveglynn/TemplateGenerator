@@ -938,7 +938,7 @@ if(_recIncludeCount > 0 ) {
             #line hidden
             
             #line 280 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- if (_singleName == "list")  { 
+ if ((_singleName == "list") || (_singleName == "profile") || (_singleName == "language"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
