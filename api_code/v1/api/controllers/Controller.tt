@@ -105,7 +105,7 @@ module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
-	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(BaseColumnName2 != "someFieldName" ){#>
 	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 
@@ -142,7 +142,7 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
-	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(BaseColumnName2 != "someFieldName" ){#>
 	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 
@@ -252,7 +252,7 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
-	<#if(BaseColumnName2 != "roleId" ){#>
+	<#if(BaseColumnName2 != "someFieldName" ){#>
 	<#var attributesList = "'id','name'"; #> <#if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}#>
 	<#if(_recIncludeCount == 0 ){#>
 

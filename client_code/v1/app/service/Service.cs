@@ -98,7 +98,7 @@ export class ");
             this.Write("\tif (filter && filter.");
             
             #line 52 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
             
             #line default
             #line hidden
@@ -112,11 +112,11 @@ export class ");
             this.Write("\'] = filter.");
             
             #line 53 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
             
             #line default
             #line hidden
-            this.Write(";\r\n\t\t};\r\n    ");
+            this.Write(".id;\r\n\t\t};\r\n    ");
             
             #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
 }}
@@ -162,10 +162,18 @@ export class ");
             
             #line default
             #line hidden
-            this.Write("\r\n        const headers = new Headers({ \'Content-Type\': \'application/json\' });\r\n " +
-                    "       return this._http.get(this._url + \"/");
+            this.Write(@"
+		if (filter && filter.orderDir) {
+			parms['orderDir'] = filter.orderDir.code;
+		};
+		if (filter && filter.orderBy) {
+			parms['orderBy'] = filter.orderBy.code;
+		};
+
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        return this._http.get(this._url + ""/");
             
-            #line 67 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 74 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -174,28 +182,28 @@ export class ");
                     "res.json())\r\n            .catch(error => Observable.throw(error.json()))\r\n\t}\r\n  " +
                     "  \r\n    get");
             
-            #line 72 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 79 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
             this.Write("ById(");
             
-            #line 72 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 79 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write("Id) {\r\n        return this._http.get(this._url + \"/");
             
-            #line 73 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write("/\" + ");
             
-            #line 73 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -204,14 +212,14 @@ export class ");
                     "s.json())\r\n            .catch(error => Observable.throw(error.json()))\r\n\t}\r\n\r\n  " +
                     "  add");
             
-            #line 78 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 85 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 78 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 85 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -219,14 +227,14 @@ export class ");
             this.Write(") {\r\n        const headers = new Headers({ \'Content-Type\': \'application/json\' });" +
                     "\r\n        const body = JSON.stringify(");
             
-            #line 80 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(");\r\n        return this._http.post(this._url + \"/");
             
-            #line 81 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 88 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -235,14 +243,14 @@ export class ");
                     "          .map(response => response.json())\r\n            .catch(error => Observa" +
                     "ble.throw(error.json()))\r\n\t}\r\n    \r\n    update");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 93 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 93 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -250,21 +258,21 @@ export class ");
             this.Write(") {\r\n        const headers = new Headers({ \'Content-Type\': \'application/json\' });" +
                     "\r\n        const body = JSON.stringify(");
             
-            #line 88 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 95 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(");\r\n        return this._http.put(this._url + \"/");
             
-            #line 89 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write("/\" + ");
             
-            #line 89 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -273,14 +281,14 @@ export class ");
                     "           .map(response => response.json())\r\n            .catch(error => Observ" +
                     "able.throw(error.json()))\r\n\t}\r\n    \r\n    delete");
             
-            #line 94 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 101 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 94 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 101 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -288,14 +296,14 @@ export class ");
             this.Write("Id) {\r\n        const headers = new Headers({ \'Content-Type\': \'application/json\' }" +
                     ");\r\n        return this._http.delete(this._url + \"/");
             
-            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 103 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write("/\" + ");
             
-            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 103 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -304,7 +312,7 @@ export class ");
                     "    .map(response => response.json())\r\n            .catch(error => Observable.th" +
                     "row(error.json()))\r\n\r\n    }\r\n  \t");
             
-            #line 101 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  foreach(DataRow row in GetColumnRow(_pluralName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
@@ -314,14 +322,14 @@ export class ");
             this.Write("\r\n/******************************************************************************" +
                     "************************\r\n Get ");
             
-            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 113 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
-            this.Write(" records by ");
+            this.Write(" records for ");
             
-            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 113 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
@@ -329,21 +337,21 @@ export class ");
             this.Write(" \r\n******************************************************************************" +
                     "************************/\r\n\tget");
             
-            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
             
             #line default
             #line hidden
-            this.Write("By");
+            this.Write("For");
             
-            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
             #line hidden
             this.Write(" = function (");
             
-            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
@@ -352,21 +360,21 @@ export class ");
                     "\'] = filter.view;\r\n\t\t}\r\n    \r\n\t\tconst headers = new Headers({ \'Content-Type\': \'a" +
                     "pplication/json\' });\r\n\t\treturn this._http.get(this._url + \"/");
             
-            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
             
             #line default
             #line hidden
             this.Write("/\" + ");
             
-            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
@@ -374,20 +382,20 @@ export class ");
             this.Write(", { search: this._commonService.setParms(parms) })\r\n\r\n\t\t\t.map(res => res.json())\r" +
                     "\n\t\t\t.catch(error => Observable.throw(error.json()))\r\n\t}\t\r\n     \r\n");
             
-            #line 122 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 129 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
 }}
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 124 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 131 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 132 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
  if ((_singleName == "user") ||  (_singleName == "list")  ||  (_singleName == "profile")  ||  (_singleName == "language")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
@@ -399,7 +407,7 @@ export class ");
             #line default
             #line hidden
             
-            #line 132 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            #line 139 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -560,7 +568,7 @@ public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool inc
    if (getLastChars(columnName,2) == "Id")   
    {
 	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "roleId") || (columnName == "parentListId")) ||
+	    ( (columnName == "parentListId")) ||
 	    ((columnName == "id") && (includeId == false))  ) {
 	       return false;
 	    } else {

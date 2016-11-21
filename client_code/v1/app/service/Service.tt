@@ -49,8 +49,8 @@ export class <#=firstUpper(_singleName)#>Service {
 	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
-	if (filter && filter.<#=BaseColumnName#>) {
-            parms['<#=BaseColumnName#>'] = filter.<#=BaseColumnName#>;
+	if (filter && filter.<#=removeId(BaseColumnName)#>) {
+            parms['<#=BaseColumnName#>'] = filter.<#=removeId(BaseColumnName)#>.id;
 		};
     <#}}#>
   	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
@@ -62,6 +62,13 @@ export class <#=firstUpper(_singleName)#>Service {
              parms['<#=BaseColumnName#>'] = filter.<#=BaseColumnName#>;
 		};
     <#}}}#>
+
+		if (filter && filter.orderDir) {
+			parms['orderDir'] = filter.orderDir.code;
+		};
+		if (filter && filter.orderBy) {
+			parms['orderBy'] = filter.orderBy.code;
+		};
 
         const headers = new Headers({ 'Content-Type': 'application/json' });
         return this._http.get(this._url + "/<#=_singleName#>/all", { search: this._commonService.setParms(parms) })
@@ -103,9 +110,9 @@ export class <#=firstUpper(_singleName)#>Service {
 	if(getIDfields(BaseColumnName,false,false)){#>
 
 /******************************************************************************************************
- Get <#=firstUpper(_singleName)#> records by <#=firstUpper(BaseColumnName)#> 
+ Get <#=firstUpper(_singleName)#> records for <#=firstUpper(BaseColumnName)#> 
 ******************************************************************************************************/
-	get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> = function (<#=BaseColumnName#>, filter?) {
+	get<#=firstUpper(_pluralName)#>For<#=firstUpper(BaseColumnName)#> = function (<#=BaseColumnName#>, filter?) {
 
 		var parms = {};
 		if (filter && filter.view) {

@@ -210,7 +210,7 @@ if (_tenantRequired == true){
             this.Write("\t");
             
             #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(BaseColumnName2 != "roleId" ){
+if(BaseColumnName2 != "someFieldName" ){
             
             #line default
             #line hidden
@@ -402,7 +402,7 @@ if (_tenantRequired == true){
             this.Write("\t");
             
             #line 145 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(BaseColumnName2 != "roleId" ){
+if(BaseColumnName2 != "someFieldName" ){
             
             #line default
             #line hidden
@@ -781,7 +781,7 @@ if (_tenantRequired == true){
             this.Write("\t");
             
             #line 255 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(BaseColumnName2 != "roleId" ){
+if(BaseColumnName2 != "someFieldName" ){
             
             #line default
             #line hidden
@@ -1109,7 +1109,7 @@ public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool inc
    if (getLastChars(columnName,2) == "Id")   
    {
 	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "roleId") || (columnName == "parentListId")) ||
+	    ( (columnName == "parentListId")) ||
 	    ((columnName == "id") && (includeId == false))  ) {
 	       return false;
 	    } else {

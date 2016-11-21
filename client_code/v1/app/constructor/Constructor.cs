@@ -319,7 +319,7 @@ public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool inc
    if (getLastChars(columnName,2) == "Id")   
    {
 	 if (((columnName == "tenantId") && (includeTenant == false)) ||
-	    ((columnName == "roleId") || (columnName == "parentListId")) ||
+	    ( (columnName == "parentListId")) ||
 	    ((columnName == "id") && (includeId == false))  ) {
 	       return false;
 	    } else {
