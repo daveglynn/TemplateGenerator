@@ -450,16 +450,78 @@ module.exports.setClauseOrder = function (req) {
 
 };
 
+module.exports.setClauseActive = function (query, where)
+{
+
+    where.active = {
+        $eq: true
+	};
+
+    if (query.hasOwnProperty('active') && query.active.length > 0)
+    {
+        if (query.active == ""false"")
+        {
+            where.active = {
+                $eq: false
+            };
+        }
+        if (query.active == ""true"") {
+            where.active = {
+                $eq: true
+            };
+        }
+    }
+
+    return where;
+
+};
+
 ");
             
-            #line 165 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 191 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+if (_codetable == true){
+            
+            #line default
+            #line hidden
+            this.Write(@"module.exports.setClauseExpired = function (query, where)
+{
+
+    if (query.hasOwnProperty('expired') && query.expired.length > 0)
+    {
+        if (query.expired == ""false"")
+        {
+            where.expired = {
+                $eq: false
+            };
+        }
+        if (query.expired == ""true"") {
+            where.expired = {
+                $eq: true
+            };
+        }
+    }
+
+    return where;
+
+};
+
+");
+            
+            #line 214 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(" \r\n\r\n");
+            
+            #line 216 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 166 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- if ((_singleName == "item") ) { 
+            #line 217 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+ if ((_singleName == "list"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\"+ _singleName +".extension.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
@@ -470,12 +532,12 @@ module.exports.setClauseOrder = function (req) {
             #line default
             #line hidden
             
-            #line 173 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 224 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
             #line hidden
-            this.Write("\r\n ");
+            this.Write(" ");
             return this.GenerationEnvironment.ToString();
         }
         

@@ -95,6 +95,8 @@ module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
     var where = {};
     where = common.setClauseAll(req, where);
     where = extension.setClauseQuery(req.query, where);
+	where = extension.setClauseActive(req.query, where);
+	<#if (_codetable == true){#>where = extension.setClauseExpired(req.query, where);<# } #> 
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
 
@@ -135,6 +137,8 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
     // builds clause
     var where = {};
     where = common.setClauseId(req, where);
+	where = extension.setClauseActive(req.query, where);
+	<#if (_codetable == true){#>where = extension.setClauseExpired(req.query, where);<# } #> 
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
 	<# _recIncludeCount = 0 ; #>
@@ -239,7 +243,9 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
     // builds clause
     var where = {};
     where = extension.setClause<#=firstUpper(BaseColumnName)#>(req, where);
-    where = extension.setClauseQueryView(req.query, where);
+	where = extension.setClauseActive(req.query, where);
+	<#if (_codetable == true){#>where = extension.setClauseExpired(req.query, where);<# } #> 
+
     <#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<#}#>
 
 
@@ -276,8 +282,35 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 };
 <#}}#>
 
+<#if (_codetable == true){#>
+/******************************************************************************************************
+ Get a Record for Dropdown
+******************************************************************************************************/
+module.exports.get<#=firstUpper(_pluralName)#>Dropdown = function (req, res) {
+
+    // builds clause
+    var where = {};
+    where = extension.setClauseActive(req.query, where);
+    where = extension.setClauseExpired(req.query, where);
+
+    //find and return the records 
+    db.<#=_singleName#>.findAll({
+        attributes: ['id', 'parentListId', 'name', 'code', 'ruleBookId'],
+        where: where
+    }).then(function (<#=_pluralName#>) {
+        if (!!<#=_pluralName#>) {
+            res.json(<#=_pluralName#>);
+        } else {
+            res.status(404).json({ "err": { "name": "<#=_singleName#>", "message": "An error occurred retrieving the record" } });
+        }
+    }, function (err) {
+        res.status(500).json(err);
+    })
+};	
+<# } #> 
+
 <# var _nongenerated = ""; #>
-<# if ((_singleName == "list") || (_singleName == "profile") || (_singleName == "language"))  { 
+<# if ((_singleName == "list"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

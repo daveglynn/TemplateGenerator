@@ -13,33 +13,33 @@ namespace TemplateGenerator
           //callGenerateApi("C:\\temp\\backend\\");
           //callGenerateClient("C:\\temp\\frontend\\");
 
-          //callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
+          callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
 
         }
 
         static void callGenerateApi(string directory)
         {
         
-            callGeneratorController(directory + "controllers\\","user", "users", true);
-            callGeneratorController(directory + "controllers\\", "tenant", "tenants", false);
-            callGeneratorController(directory + "controllers\\", "todo", "todos", true);
-            callGeneratorController(directory + "controllers\\", "order", "orders", true);
-            callGeneratorController(directory + "controllers\\", "profile", "profiles", true);
-            callGeneratorController(directory + "controllers\\", "list", "lists", false);
-            callGeneratorController(directory + "controllers\\", "language", "languages", false);
-            callGeneratorController(directory + "controllers\\", "item", "items", false);
-            callGeneratorController(directory + "controllers\\", "ruleBook", "ruleBooks", false);
+            callGeneratorController(directory + "controllers\\","user", "users", true, false);
+            callGeneratorController(directory + "controllers\\", "tenant", "tenants", false, false);
+            callGeneratorController(directory + "controllers\\", "todo", "todos", true, false);
+            callGeneratorController(directory + "controllers\\", "order", "orders", true, false);
+            callGeneratorController(directory + "controllers\\", "profile", "profiles", true, true);
+            callGeneratorController(directory + "controllers\\", "list", "lists", false, false);
+            callGeneratorController(directory + "controllers\\", "language", "languages", false, true);
+            callGeneratorController(directory + "controllers\\", "item", "items", false, true);
+            callGeneratorController(directory + "controllers\\", "ruleBook", "ruleBooks", false, false);
 
-            callGeneratorExtension(directory + "controllers\\extensions\\", "user", "users", false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "tenant", "tenants", false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "todo", "todos", true);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "order", "orders", true);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "profile", "profiles", true);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "list", "lists", false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "language", "languages", false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "user", "users", true, false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "tenant", "tenants", false, false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "todo", "todos", true, false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "order", "orders", true, false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "profile", "profiles", true, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "list", "lists", false, false);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "language", "languages", false, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false, false);
 
             callGeneratorRouter(directory + "routes\\", "item", "items", false);
             callGeneratorRouter(directory + "routes\\", "language", "languages", false);
@@ -88,17 +88,17 @@ namespace TemplateGenerator
 
         }
 
-        static void callGeneratorController(string directory, string singleName, string pluralName, bool tenantRequired) 
+        static void callGeneratorController(string directory, string singleName, string pluralName, bool tenantRequired, bool codetable) 
         {
             string path = @directory + singleName + ".controller.js";
-            var controller = new Controller("TemplateGenerator",singleName, pluralName, tenantRequired);
+            var controller = new Controller("TemplateGenerator",singleName, pluralName, tenantRequired, codetable);
             var result = controller.TransformText();
             File.WriteAllText(path, result);
         }
-         static void callGeneratorExtension(string directory, string singleName, string pluralName, bool tenantRequired)
+         static void callGeneratorExtension(string directory, string singleName, string pluralName, bool tenantRequired, bool codetable)
         {
             string path = @directory + singleName + ".extension.js";
-            var extension = new Extension("TemplateGenerator", singleName, pluralName, tenantRequired);
+            var extension = new Extension("TemplateGenerator", singleName, pluralName, tenantRequired, codetable);
             var result =   extension.TransformText();
             File.WriteAllText(path, result);
         

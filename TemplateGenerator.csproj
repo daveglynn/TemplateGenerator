@@ -74,7 +74,6 @@
       <DependentUpon>Extension.tt</DependentUpon>
     </Compile>
     <Compile Include="api_code\v1\api\controllers\extensions\ExtensionData.cs" />
-    <Content Include="api_code\v1\api\controllers\extensions\nongenerated\item.extension.js" />
     <Compile Include="api_code\v1\api\routes\Router.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,9 +105,8 @@
       <LastGenOutput>Router.cs</LastGenOutput>
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
-    <Content Include="api_code\v1\api\controllers\nongenerated\language.controller.js" />
+    <Content Include="api_code\v1\api\controllers\extensions\nongenerated\list.extension.js" />
     <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
-    <Content Include="api_code\v1\api\controllers\nongenerated\profile.controller.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\language.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\list.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\profile.router.js" />

@@ -7,7 +7,8 @@ module.exports.getListByIdItems = function (req, res) {
     // builds clause
     var where = {};
     where = common.setClauseId(req, where);
-
+	where = extension.setClauseActive(req.query, where);
+	where = extension.setClauseExpired(req.query, where); 
 
     var include = [{
         model: db.item, attributes: ['id', 'parentListId', 'name', 'code', 'ruleBookId']
