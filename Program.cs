@@ -41,15 +41,18 @@ namespace TemplateGenerator
             callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false, true);
             callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false, false);
 
-            callGeneratorRouter(directory + "routes\\", "item", "items", false);
-            callGeneratorRouter(directory + "routes\\", "language", "languages", false);
-            callGeneratorRouter(directory + "routes\\", "list", "lists", false);
-            callGeneratorRouter(directory + "routes\\", "order", "orders", false);
-            callGeneratorRouter(directory + "routes\\", "profile", "profiles", false);
-            callGeneratorRouter(directory + "routes\\", "ruleBook", "ruleBooks", false);
-            callGeneratorRouter(directory + "routes\\", "tenant", "tenants", false);
-            callGeneratorRouter(directory + "routes\\", "todo", "todos", false);
-            callGeneratorRouter(directory + "routes\\", "user", "users", false);
+            callGeneratorRouter(directory + "routes\\", "user", "users", false, false);
+            callGeneratorRouter(directory + "routes\\", "tenant", "tenants", false, false);
+            callGeneratorRouter(directory + "routes\\", "todo", "todos", false, false);
+            callGeneratorRouter(directory + "routes\\", "order", "orders", false, false);
+            callGeneratorRouter(directory + "routes\\", "profile", "profiles", false, true);
+            callGeneratorRouter(directory + "routes\\", "list", "lists", false, false);
+            callGeneratorRouter(directory + "routes\\", "language", "languages", false, true);
+            callGeneratorRouter(directory + "routes\\", "item", "items", false, true);
+            callGeneratorRouter(directory + "routes\\", "ruleBook", "ruleBooks", false, false);
+
+ 
+
 
         }
 
@@ -103,10 +106,10 @@ namespace TemplateGenerator
             File.WriteAllText(path, result);
         
         }
-        static void callGeneratorRouter(string directory, string singleName, string pluralName, bool tenantRequired)
+        static void callGeneratorRouter(string directory, string singleName, string pluralName, bool tenantRequired, bool codetable)
         {
             string path = @directory + singleName + ".router.js";
-            var Router = new Router("TemplateGenerator", singleName, pluralName, false);
+            var Router = new Router("TemplateGenerator", singleName, pluralName, false, codetable);
             var result = Router.TransformText();
             File.WriteAllText(path, result);
         }

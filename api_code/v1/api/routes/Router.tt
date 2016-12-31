@@ -55,8 +55,20 @@ router
     .route('/<#=removeId(BaseColumnName)#>/:<#=BaseColumnName#>(\\d+)/')
     .get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#>);
 <#}}#>
+<#if (_codetable == true){#>
+<#if (_singleName != "item"){#>
+router
+    .route('/dropdown')
+	.get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>Dropdown);
+<# } #> 
+<#if (_singleName == "item"){#>
+router
+    .route('/list/:listId(\\d+)/dropdown/')
+	.get(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.get<#=firstUpper(_pluralName)#>Dropdown);
+<# } #>
+<# } #> 
 <# var _nongenerated = ""; #>
-<# if ( (_singleName == "user") || (_singleName == "list") || (_singleName == "profile") || (_singleName == "language")) { 
+<# if ( (_singleName == "user") ) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\routes\\nongenerated\\"+ _singleName +".router.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

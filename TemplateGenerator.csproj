@@ -107,9 +107,6 @@
     </None>
     <Content Include="api_code\v1\api\controllers\extensions\nongenerated\list.extension.js" />
     <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
-    <Content Include="api_code\v1\api\routes\nongenerated\language.router.js" />
-    <Content Include="api_code\v1\api\routes\nongenerated\list.router.js" />
-    <Content Include="api_code\v1\api\routes\nongenerated\profile.router.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\user.router.js" />
     <None Include="client_code\v1\app\constructor\Constructor.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

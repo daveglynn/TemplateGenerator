@@ -292,7 +292,9 @@ module.exports.get<#=firstUpper(_pluralName)#>Dropdown = function (req, res) {
     var where = {};
     where = extension.setClauseActive(req.query, where);
     where = extension.setClauseExpired(req.query, where);
-
+	<#if (_singleName == "item"){#>
+where = extension.setClauseListId(req, where);
+	<# } #> 
     //find and return the records 
     db.<#=_singleName#>.findAll({
         attributes: ['id', 'parentListId', 'name', 'code', 'ruleBookId'],
