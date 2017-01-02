@@ -106,7 +106,7 @@
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
     <Content Include="api_code\v1\api\controllers\extensions\nongenerated\list.extension.js" />
-    <Content Include="api_code\v1\api\controllers\nongenerated\list.controller.js" />
+    <Content Include="api_code\v1\api\controllers\nongenerated\item.controller.js" />
     <Content Include="api_code\v1\api\routes\nongenerated\user.router.js" />
     <None Include="client_code\v1\app\constructor\Constructor.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -119,7 +119,7 @@
       <CustomToolNamespace>TemplateGenerator</CustomToolNamespace>
     </None>
     <Content Include="client_code\v1\app\service\nongenerated\language.service.js" />
-    <Content Include="client_code\v1\app\service\nongenerated\list.service.js" />
+    <Content Include="client_code\v1\app\service\nongenerated\item.service.js" />
     <Content Include="client_code\v1\app\service\nongenerated\profile.service.js" />
     <Content Include="client_code\v1\app\service\nongenerated\user.service.js" />
     <None Include="client_code\v1\app\service\Service.tt">

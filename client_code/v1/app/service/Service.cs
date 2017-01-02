@@ -396,7 +396,7 @@ export class ");
             #line hidden
             
             #line 132 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- if ((_singleName == "user") ||  (_singleName == "list")  ||  (_singleName == "profile")  ||  (_singleName == "language")) { 
+ if ((_singleName == "user") ||  (_singleName == "item")  ||  (_singleName == "profile")  ||  (_singleName == "language")) { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\client_code\\v1\\app\\service\\nongenerated\\"+ _singleName +".service.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 

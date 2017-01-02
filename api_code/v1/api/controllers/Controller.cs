@@ -175,14 +175,14 @@ module.exports.get");
             #line hidden
             this.Write("All = function(req, res) {\r\n\r\n    // builds clause \r\n    var where = {};\r\n    whe" +
                     "re = common.setClauseAll(req, where);\r\n    where = extension.setClauseQuery(req." +
-                    "query, where);\r\n\twhere = extension.setClauseActive(req.query, where);\r\n\t");
+                    "query, where);\r\n\twhere = common.setClauseActive(req, where);\r\n\t");
             
             #line 99 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
             #line hidden
-            this.Write("where = extension.setClauseExpired(req.query, where);");
+            this.Write("where = common.setClauseExpired(req.query, where);");
             
             #line 99 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
@@ -382,15 +382,15 @@ module.exports.get");
             #line default
             #line hidden
             this.Write("ById = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    whe" +
-                    "re = common.setClauseId(req, where);\r\n\twhere = extension.setClauseActive(req.que" +
-                    "ry, where);\r\n\t");
+                    "re = common.setClauseId(req, where);\r\n\twhere = common.setClauseActive(req, where" +
+                    ");\r\n\t");
             
             #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
             #line hidden
-            this.Write("where = extension.setClauseExpired(req.query, where);");
+            this.Write("where = common.setClauseExpired(req.query, where);");
             
             #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
@@ -775,14 +775,14 @@ if (_tenantRequired == true){
             
             #line default
             #line hidden
-            this.Write("(req, where);\r\n\twhere = extension.setClauseActive(req.query, where);\r\n\t");
+            this.Write("(req, where);\r\n\twhere = common.setClauseActive(req, where);\r\n\t");
             
             #line 247 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
             #line hidden
-            this.Write("where = extension.setClauseExpired(req.query, where);");
+            this.Write("where = common.setClauseExpired(req.query, where);");
             
             #line 247 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
@@ -990,8 +990,8 @@ module.exports.get");
             #line default
             #line hidden
             this.Write("Dropdown = function (req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n  " +
-                    "  where = extension.setClauseActive(req.query, where);\r\n    where = extension.se" +
-                    "tClauseExpired(req.query, where);\r\n\t");
+                    "  where = common.setClauseActive(req, where);\r\n    where = common.setClauseExpir" +
+                    "ed(req.query, where);\r\n\t");
             
             #line 295 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_singleName == "item"){
@@ -1058,7 +1058,7 @@ if (_singleName == "item"){
             #line hidden
             
             #line 315 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- if ((_singleName == "list"))  { 
+ if ((_singleName == "item"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
 	  _nongenerated = File.ReadAllText(path); 
