@@ -47,7 +47,7 @@ router
     .route('/:id(\\d+)/')
     .delete(middleware.requireAuthentication, middleware.requireAuthorisation, ctrl<#=firstUpper(_singleName)#>.delete<#=firstUpper(_singleName)#>);
 
-	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
 

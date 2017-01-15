@@ -169,7 +169,7 @@ var ctrl");
             this.Write(");\r\n\r\n\t");
             
             #line 50 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\Router.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -358,7 +358,7 @@ public enum ColumnInfo
 IEnumerable<string> GetColumnDetails()  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query
@@ -385,12 +385,20 @@ IEnumerable<string> GetColumnDetails()
 
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
-
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+			//tableName = tableName.ToString().ToLower();
+			
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
-            // Define a query
-            NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM " + tableName, conn);
+			StringBuilder sb = new StringBuilder();
+ 
+		    sb.Append(" SELECT * FROM ");
+			sb.Append("\"");
+			sb.Append(tableName);
+			sb.Append("\"");
+
+	       // Define a query
+            NpgsqlCommand command = new NpgsqlCommand(sb.ToString(), conn);
 
              
             using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))

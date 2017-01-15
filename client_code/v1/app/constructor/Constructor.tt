@@ -27,7 +27,7 @@
 export class <#=firstUpper(_singleName)#> {
 	constructor( 
 	<#var myCount=0;#>
-	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	 var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,true,false,false)){#><#if(myCount> 0){#>

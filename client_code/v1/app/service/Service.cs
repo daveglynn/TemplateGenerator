@@ -89,7 +89,7 @@ export class ");
                     "       parms[\'q\'] = filter.q;\r\n        }\r\n\t");
             
             #line 49 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -102,7 +102,14 @@ export class ");
             
             #line default
             #line hidden
-            this.Write(") {\r\n            parms[\'");
+            this.Write(" && filter.");
+            
+            #line 52 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName)));
+            
+            #line default
+            #line hidden
+            this.Write(".id != 0) {\r\n            parms[\'");
             
             #line 53 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
@@ -126,7 +133,7 @@ export class ");
             this.Write("  \t");
             
             #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
@@ -134,7 +141,7 @@ export class ");
             
             #line default
             #line hidden
-            this.Write("\tif (filter && filter.");
+            this.Write("if (filter && filter.");
             
             #line 61 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
@@ -163,10 +170,10 @@ export class ");
             #line default
             #line hidden
             this.Write(@"
-		if (filter && filter.orderDir) {
+		if (filter && filter.orderDir && filter.orderDir.code != """") {
 			parms['orderDir'] = filter.orderDir.code;
 		};
-		if (filter && filter.orderBy) {
+		if (filter && filter.orderBy && filter.orderBy.code != """") {
 			parms['orderBy'] = filter.orderBy.code;
 		};
 
@@ -313,7 +320,7 @@ export class ");
                     "row(error.json()))\r\n\r\n    }\r\n  \t");
             
             #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\Service.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -458,7 +465,7 @@ public enum ColumnInfo
 IEnumerable<string> GetColumnDetails()  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query
@@ -486,7 +493,7 @@ IEnumerable<string> GetColumnDetails()
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query

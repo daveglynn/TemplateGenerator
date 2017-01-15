@@ -103,7 +103,7 @@ module.exports.get<#=firstUpper(_pluralName)#>All = function(req, res) {
     var order = extension.setClauseOrder(req); 	
 
 	<# _recIncludeCount = 0 ; #>
- 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ 	<# foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
@@ -142,7 +142,7 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
     var attributes = common.excludeAttributes();
 	<# _recIncludeCount = 0 ; #>
- 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ 	<# foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
@@ -231,7 +231,7 @@ module.exports.delete<#=firstUpper(_singleName)#> = function(req, res) {
         res.status(500).json(err);
     });
 };
-  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+  	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
 
@@ -254,7 +254,7 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 	var order = extension.setClauseOrder(req); 	
 
 	<# _recIncludeCount = 0 ; #>
- 	<# foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ 	<# foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
@@ -292,6 +292,8 @@ module.exports.get<#=firstUpper(_pluralName)#>Dropdown = function (req, res) {
     var where = {};
     where = common.setClauseActive(req, where);
     where = common.setClauseExpired(req.query, where);
+	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
+
 	<#if (_singleName == "item"){#>
 where = extension.setClauseListId(req, where);
 	<# } #> 

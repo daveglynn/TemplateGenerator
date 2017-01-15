@@ -214,7 +214,7 @@ if (_tenantRequired == true){
             this.Write(" \t");
             
             #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){
@@ -421,7 +421,7 @@ if (_tenantRequired == true){
             this.Write(" \t");
             
             #line 145 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){
@@ -731,7 +731,7 @@ if (_tenantRequired == true){
                     "s.status(500).json(err);\r\n    });\r\n};\r\n  \t");
             
             #line 234 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -814,7 +814,7 @@ if (_tenantRequired == true){
             this.Write(" \t");
             
             #line 257 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- foreach(DataRow row2 in GetColumnRow(_pluralName)) 
+ foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){
@@ -994,20 +994,34 @@ module.exports.get");
                     "ed(req.query, where);\r\n\t");
             
             #line 295 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if (_tenantRequired == true){
+            
+            #line default
+            #line hidden
+            this.Write("where = common.setClauseTenantId(req, where);");
+            
+            #line 295 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(" \r\n\r\n\t");
+            
+            #line 297 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_singleName == "item"){
             
             #line default
             #line hidden
             this.Write("where = extension.setClauseListId(req, where);\r\n\t");
             
-            #line 297 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 299 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n    //find and return the records \r\n    db.");
             
-            #line 299 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 301 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -1015,28 +1029,28 @@ if (_singleName == "item"){
             this.Write(".findAll({\r\n        attributes: [\'id\', \'parentListId\', \'name\', \'code\', \'ruleBookI" +
                     "d\'],\r\n        where: where\r\n    }).then(function (");
             
-            #line 302 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 304 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        if (!!");
             
-            #line 303 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 305 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n            res.json(");
             
-            #line 304 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 306 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(");\r\n        } else {\r\n            res.status(404).json({ \"err\": { \"name\": \"");
             
-            #line 306 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 308 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -1044,20 +1058,20 @@ if (_singleName == "item"){
             this.Write("\", \"message\": \"An error occurred retrieving the record\" } });\r\n        }\r\n    }, " +
                     "function (err) {\r\n        res.status(500).json(err);\r\n    })\r\n};\t\r\n");
             
-            #line 312 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 314 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\r\n");
             
-            #line 314 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 316 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 315 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 317 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  if ((_singleName == "item"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
@@ -1069,7 +1083,7 @@ if (_singleName == "item"){
             #line default
             #line hidden
             
-            #line 322 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 324 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -1119,7 +1133,7 @@ public enum ColumnInfo
 IEnumerable<string> GetColumnDetails()  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query
@@ -1146,12 +1160,20 @@ IEnumerable<string> GetColumnDetails()
 
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
-
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+			//tableName = tableName.ToString().ToLower();
+			
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
-            // Define a query
-            NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM " + tableName, conn);
+			StringBuilder sb = new StringBuilder();
+ 
+		    sb.Append(" SELECT * FROM ");
+			sb.Append("\"");
+			sb.Append(tableName);
+			sb.Append("\"");
+
+	       // Define a query
+            NpgsqlCommand command = new NpgsqlCommand(sb.ToString(), conn);
 
              
             using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))

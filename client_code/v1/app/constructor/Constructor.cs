@@ -76,7 +76,7 @@ var myCount=0;
             this.Write("\t");
             
             #line 30 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\constructor\Constructor.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	 var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,true,false,false)){

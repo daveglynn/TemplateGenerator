@@ -14,62 +14,79 @@ namespace TemplateGenerator
           //callGenerateClient("C:\\temp\\frontend\\");
 
           callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-         // callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
 
         }
 
         static void callGenerateApi(string directory)
         {
-        
-            callGeneratorController(directory + "controllers\\","user", "users", true, false);
+
+            callGeneratorController(directory + "controllers\\", "access", "access", true, true);
+
+            callGeneratorController(directory + "controllers\\", "object", "objects", false, true);
+            callGeneratorController(directory + "controllers\\", "user", "users", true, false);
             callGeneratorController(directory + "controllers\\", "tenant", "tenants", false, false);
             callGeneratorController(directory + "controllers\\", "todo", "todos", true, false);
-            callGeneratorController(directory + "controllers\\", "order", "orders", true, false);
             callGeneratorController(directory + "controllers\\", "profile", "profiles", true, true);
+            callGeneratorController(directory + "controllers\\", "company", "companies", true, true);
+            callGeneratorController(directory + "controllers\\", "division", "divisions", true, true);
+
             callGeneratorController(directory + "controllers\\", "list", "lists", false, false);
             callGeneratorController(directory + "controllers\\", "language", "languages", false, true);
             callGeneratorController(directory + "controllers\\", "item", "items", false, true);
             callGeneratorController(directory + "controllers\\", "ruleBook", "ruleBooks", false, false);
 
+            callGeneratorExtension(directory + "controllers\\extensions\\", "object", "objects", false, false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "user", "users", true, false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "tenant", "tenants", false, false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "todo", "todos", true, false);
-            callGeneratorExtension(directory + "controllers\\extensions\\", "order", "orders", true, false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "profile", "profiles", true, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "company", "companies", true, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "division", "divisions", true, true);
+            callGeneratorExtension(directory + "controllers\\extensions\\", "access", "access", true, true);
             callGeneratorExtension(directory + "controllers\\extensions\\", "list", "lists", false, false);
             callGeneratorExtension(directory + "controllers\\extensions\\", "language", "languages", false, true);
             callGeneratorExtension(directory + "controllers\\extensions\\", "item", "items", false, true);
             callGeneratorExtension(directory + "controllers\\extensions\\", "ruleBook", "ruleBooks", false, false);
 
+            callGeneratorRouter(directory + "routes\\", "object", "objects", false, false);
             callGeneratorRouter(directory + "routes\\", "user", "users", false, false);
             callGeneratorRouter(directory + "routes\\", "tenant", "tenants", false, false);
             callGeneratorRouter(directory + "routes\\", "todo", "todos", false, false);
-            callGeneratorRouter(directory + "routes\\", "order", "orders", false, false);
             callGeneratorRouter(directory + "routes\\", "profile", "profiles", false, true);
+            callGeneratorRouter(directory + "routes\\", "company", "companies", false, true);
+            callGeneratorRouter(directory + "routes\\", "division", "divisions", false, true);
+            callGeneratorRouter(directory + "routes\\", "access", "access", false, true);
             callGeneratorRouter(directory + "routes\\", "list", "lists", false, false);
             callGeneratorRouter(directory + "routes\\", "language", "languages", false, true);
             callGeneratorRouter(directory + "routes\\", "item", "items", false, true);
             callGeneratorRouter(directory + "routes\\", "ruleBook", "ruleBooks", false, false);
-
- 
-
+            
 
         }
+ 
 
         static void callGenerateClient(string directory)
         {
-
+            callGeneratorService(directory + "system\\objects\\", "object", "objects", false);
             callGeneratorService(directory + "security\\users\\", "user", "users", false);
             callGeneratorService(directory + "security\\tenants\\", "tenant", "tenants", false);
+            callGeneratorService(directory + "security\\access\\", "access", "access", false);
             callGeneratorService(directory + "master\\profiles\\", "profile", "profiles", false);
+            callGeneratorService(directory + "master\\companies\\", "company", "companies", false);
+            callGeneratorService(directory + "master\\divisions\\", "division", "divisions", false);
             callGeneratorService(directory + "master\\languages\\", "language", "languages", false);
             callGeneratorService(directory + "master\\lists\\", "list", "lists", false);
             callGeneratorService(directory + "master\\items\\", "item", "items", false);
             callGeneratorService(directory + "master\\rulebooks\\", "ruleBook", "ruleBooks", false);
 
+            callGeneratorConstructor(directory + "security\\objects\\", "object", "objects", false);
             callGeneratorConstructor(directory + "security\\users\\", "user", "users", false);
             callGeneratorConstructor(directory + "security\\tenants\\", "tenant", "tenants", false);
+            callGeneratorConstructor(directory + "security\\access\\", "access", "access", false);
             callGeneratorConstructor(directory + "master\\profiles\\", "profile", "profiles", false);
+            callGeneratorConstructor(directory + "master\\companies\\", "company", "companies", false);
+            callGeneratorConstructor(directory + "master\\divisions\\", "division", "divisions", false);
             callGeneratorConstructor(directory + "master\\languages\\", "language", "languages", false);
             callGeneratorConstructor(directory + "master\\lists\\", "list", "lists", false);
             callGeneratorConstructor(directory + "master\\items\\", "item", "items", false);

@@ -46,27 +46,27 @@ export class <#=firstUpper(_singleName)#>Service {
         if (filter && filter.q) {
             parms['q'] = filter.q;
         }
-	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
-	if (filter && filter.<#=removeId(BaseColumnName)#>) {
+	if (filter && filter.<#=removeId(BaseColumnName)#> && filter.<#=removeId(BaseColumnName)#>.id != 0) {
             parms['<#=BaseColumnName#>'] = filter.<#=removeId(BaseColumnName)#>.id;
 		};
     <#}}#>
-  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+  	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
 	if(allowType("System.Boolean",BaseColumnName,DataType,false,false,false,false)){#>
-	if (filter && filter.<#=BaseColumnName#>) {
+if (filter && filter.<#=BaseColumnName#>) {
              parms['<#=BaseColumnName#>'] = filter.<#=BaseColumnName#>;
 		};
     <#}}}#>
 
-		if (filter && filter.orderDir) {
+		if (filter && filter.orderDir && filter.orderDir.code != "") {
 			parms['orderDir'] = filter.orderDir.code;
 		};
-		if (filter && filter.orderBy) {
+		if (filter && filter.orderBy && filter.orderBy.code != "") {
 			parms['orderBy'] = filter.orderBy.code;
 		};
 
@@ -105,7 +105,7 @@ export class <#=firstUpper(_singleName)#>Service {
             .catch(error => Observable.throw(error.json()))
 
     }
-  	<# foreach(DataRow row in GetColumnRow(_pluralName)) 
+  	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
 

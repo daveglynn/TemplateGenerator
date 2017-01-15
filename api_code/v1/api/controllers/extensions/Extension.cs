@@ -73,7 +73,7 @@ module.exports.setPost = function (req, mode) {
 	");
             
             #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(allowFields(BaseColumnName,false,false,false,false)){
             
@@ -117,7 +117,7 @@ if (_singleName == "user"){
             this.Write("\tbody.createdBy = null;\r\n  \t");
             
             #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -170,7 +170,7 @@ if (_singleName == "user"){
                     "\r\n    var attributes = {};\r\n\r\n\t");
             
             #line 67 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
             
@@ -209,7 +209,7 @@ if (_singleName == "user"){
                     " = {\r\n\t\t$or: [\r\n  \t");
             
             #line 81 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
@@ -255,7 +255,7 @@ _recCount++;
             this.Write(" \t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\r\n  \t");
             
             #line 91 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
@@ -301,7 +301,7 @@ _recCount++;
             this.Write("\r\n  \t");
             
             #line 103 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -345,7 +345,7 @@ _recCount++;
             this.Write("\treturn where;\r\n};\r\n  \t");
             
             #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName)) 
+ foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
             
@@ -410,7 +410,7 @@ module.exports.setClauseOrder = function (req) {
 		");
             
             #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
- foreach(DataRow row in GetColumnRow(_pluralName))  
+ foreach(DataRow row in GetColumnRow(_singleName))  
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
             
             #line default
@@ -522,7 +522,7 @@ public enum ColumnInfo
 IEnumerable<string> GetColumnDetails()  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query
@@ -549,12 +549,20 @@ IEnumerable<string> GetColumnDetails()
 
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
-
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+			//tableName = tableName.ToString().ToLower();
+			
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
-            // Define a query
-            NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM " + tableName, conn);
+			StringBuilder sb = new StringBuilder();
+ 
+		    sb.Append(" SELECT * FROM ");
+			sb.Append("\"");
+			sb.Append(tableName);
+			sb.Append("\"");
+
+	       // Define a query
+            NpgsqlCommand command = new NpgsqlCommand(sb.ToString(), conn);
 
              
             using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))
