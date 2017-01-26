@@ -207,7 +207,7 @@ if (_tenantRequired == true){
                     "setClauseOrder(req); \t\r\n\r\n\t");
             
             #line 105 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- _recIncludeCount = 0 ; 
+ _recIncludeCount = 0 ; var RuleBookList = "";
             
             #line default
             #line hidden
@@ -235,103 +235,156 @@ var attributesList = "'id','name'";
             
             #line default
             #line hidden
-            this.Write(" ");
             
             #line 111 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}
+if(removeId(BaseColumnName2) == "user" ){ attributesList = userAttributesList; RuleBookList = ruleBookFields;}
             
             #line default
             #line hidden
             this.Write("\t");
             
             #line 112 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = "";}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 113 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(isCodeTableField(BaseColumnName2) == true){ attributesList = codeTableAttributesList;RuleBookList = ruleBookFields;}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount == 0 ){
             
             #line default
             #line hidden
             this.Write("\r\n\tvar include = [{ model: db.");
             
-            #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
             
             #line default
             #line hidden
             this.Write(",attributes: [");
             
-            #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
             
             #line default
             #line hidden
-            this.Write("]}");
+            this.Write("]");
             
-            #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
+            
+            #line default
+            #line hidden
+            this.Write(",");
+            
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             
-            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
+            
+            #line default
+            #line hidden
+            this.Write("}");
+            
+            #line 116 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 117 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t   ,{model: db.");
+            this.Write("\t\t\t\t   \r\n\t\t\t\t   ,{model: db.");
             
-            #line 117 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
             
             #line default
             #line hidden
             this.Write(",attributes: [");
             
-            #line 117 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
             
             #line default
             #line hidden
-            this.Write("]}  ");
+            this.Write("]");
             
-            #line 117 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 118 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-_recIncludeCount++;
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
             
             #line default
             #line hidden
-            this.Write(" ");
-            
-            #line 118 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}}
-            
-            #line default
-            #line hidden
-            
-            #line 118 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 118 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(_recIncludeCount > 0 ) {
-            
-            #line default
-            #line hidden
-            this.Write("]; \t\r\n");
+            this.Write(",");
             
             #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\t\r\n    db.");
+            
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
+            
+            #line default
+            #line hidden
+            this.Write("}  ");
+            
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
             
             #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+_recIncludeCount++;
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}}
+            
+            #line default
+            #line hidden
+            
+            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(_recIncludeCount > 0 ) {
+            
+            #line default
+            #line hidden
+            this.Write("]; \t\r\n");
+            
+            #line 121 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n    db.");
+            
+            #line 122 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -339,28 +392,28 @@ if(_recIncludeCount > 0 ) {
             this.Write(".findAll({\r\n        attributes: attributes,\r\n        where: where ,\r\n\t\torder: [or" +
                     "der]");
             
-            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
             this.Write(",\r\n\t\tinclude: include ");
             
-            #line 124 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 126 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\t\r\n    }).then(function(");
             
-            #line 125 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 127 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        res.json(");
             
-            #line 126 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 128 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
@@ -376,7 +429,7 @@ if(_recIncludeCount > 0 ) {
 ******************************************************************************************************/
 module.exports.get");
             
-            #line 135 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 137 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
@@ -385,42 +438,42 @@ module.exports.get");
                     "re = common.setClauseId(req, where);\r\n\twhere = common.setClauseActive(req, where" +
                     ");\r\n\t");
             
-            #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 143 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseExpired(req.query, where);");
             
-            #line 141 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 143 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\t");
             
-            #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 144 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 144 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
-            this.Write(" \r\n    var attributes = common.excludeAttributes();\r\n\t");
+            this.Write(" \r\n    var attributes = common.excludeAttributes();\r\n\r\n\t");
             
-            #line 144 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- _recIncludeCount = 0 ; 
+            #line 147 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+ _recIncludeCount = 0 ;   RuleBookList = "";
             
             #line default
             #line hidden
             this.Write(" \t");
             
-            #line 145 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 148 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
@@ -430,150 +483,203 @@ if (_tenantRequired == true){
             #line hidden
             this.Write("\t");
             
-            #line 149 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 152 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(BaseColumnName2 != "someFieldName" ){
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 150 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 var attributesList = "'id','name'"; 
             
             #line default
             #line hidden
-            this.Write(" ");
             
-            #line 150 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}
+            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(removeId(BaseColumnName2) == "user" ){ attributesList = userAttributesList; RuleBookList = ruleBookFields;}
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 151 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 154 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = ruleBookFields;}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 155 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(isCodeTableField(BaseColumnName2) == true){ attributesList = codeTableAttributesList;RuleBookList = ruleBookFields;}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount == 0 ){
             
             #line default
             #line hidden
             this.Write("\r\n\tvar include = [{ model: db.");
             
-            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
             
             #line default
             #line hidden
             this.Write(",attributes: [");
             
-            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
             
             #line default
             #line hidden
-            this.Write("]}");
+            this.Write("]");
             
-            #line 153 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 154 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(_recIncludeCount > 0 ) {
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t   ,{model: db.");
-            
-            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
-            
-            #line default
-            #line hidden
-            this.Write(",attributes: [");
-            
-            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
-            
-            #line default
-            #line hidden
-            this.Write("]}  ");
-            
-            #line 156 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 157 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-_recIncludeCount++;
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 157 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}}
-            
-            #line default
-            #line hidden
-            
-            #line 157 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 157 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(_recIncludeCount > 0 ) {
-            
-            #line default
-            #line hidden
-            this.Write("]; \t\r\n");
+            this.Write(",");
             
             #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\t\r\n    //find and return the records \r\n    db.");
             
-            #line 160 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
             
             #line default
             #line hidden
-            this.Write(".findOne({\r\n        attributes: attributes,\r\n        where: where ");
+            this.Write("}");
+            
+            #line 158 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 159 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(_recIncludeCount > 0 ) {
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t\t   ,{model: db.");
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
+            
+            #line default
+            #line hidden
+            this.Write(",attributes: [");
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
+            
+            #line default
+            #line hidden
+            this.Write("]");
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
+            
+            #line default
+            #line hidden
+            this.Write(",");
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
+            
+            #line default
+            #line hidden
+            this.Write("}  ");
+            
+            #line 161 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 162 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+_recIncludeCount++;
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 162 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}}
+            
+            #line default
+            #line hidden
+            
+            #line 162 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
             
             #line 162 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
-            this.Write(",\r\n\t\tinclude: include ");
+            this.Write("]; \t\r\n");
             
             #line 163 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\t\r\n    }).then(function(");
-            
-            #line 164 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
-            
-            #line default
-            #line hidden
-            this.Write(") {\r\n        if (!!");
+            this.Write("\t\r\n    //find and return the records \r\n    db.");
             
             #line 165 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
+            this.Write(".findOne({\r\n        attributes: attributes,\r\n        where: where ");
+            
+            #line 167 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(_recIncludeCount > 0 ) {
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n\t\tinclude: include ");
+            
+            #line 168 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n    }).then(function(");
+            
+            #line 169 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            
+            #line default
+            #line hidden
+            this.Write(") {\r\n        if (!!");
+            
+            #line 170 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
+            
+            #line default
+            #line hidden
             this.Write(") {\r\n            res.json(");
             
-            #line 166 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 171 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -581,7 +687,7 @@ if(_recIncludeCount > 0 ) {
             this.Write(".toPublicJSON());\r\n        } else {\r\n            res.status(404).json({\"err\": {\"n" +
                     "ame\": \"");
             
-            #line 168 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 173 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -598,7 +704,7 @@ if(_recIncludeCount > 0 ) {
 ******************************************************************************************************/
 module.exports.update");
             
-            #line 178 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 183 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
@@ -616,56 +722,56 @@ module.exports.update");
     where = common.setClauseId(req, where);
     ");
             
-            #line 189 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 194 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 189 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 194 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n\r\n    // find record on database, update record and return to client\r\n    db.");
             
-            #line 193 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 198 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".findOne({\r\n        where: where\r\n    }).then(function(");
             
-            #line 195 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 200 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        if (");
             
-            #line 196 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 201 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n            ");
             
-            #line 197 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 202 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(".update(attributes).then(function(");
             
-            #line 197 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 202 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
             #line hidden
             this.Write(") {\r\n                res.json(");
             
-            #line 198 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 203 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -674,7 +780,7 @@ if (_tenantRequired == true){
                     ").json(err);\r\n            });\r\n        } else {\r\n             res.status(404).js" +
                     "on({\"err\": {\"name\": \"");
             
-            #line 203 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 208 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -691,7 +797,7 @@ if (_tenantRequired == true){
 ******************************************************************************************************/
 module.exports.delete");
             
-            #line 213 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 218 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
@@ -699,21 +805,21 @@ module.exports.delete");
             this.Write(" = function(req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    where =" +
                     " common.setClauseId(req, where);\r\n    ");
             
-            #line 218 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 223 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 218 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 223 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n\r\n    // delete record on database\r\n    db.");
             
-            #line 222 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 227 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -721,7 +827,7 @@ if (_tenantRequired == true){
             this.Write(".destroy({\r\n        where: where\r\n    }).then(function(rowsDeleted) {\r\n        if" +
                     " (rowsDeleted === 0) {\r\n            res.status(404).json({ \"err\": { \"name\": \"");
             
-            #line 226 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 231 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -730,7 +836,7 @@ if (_tenantRequired == true){
                     "          res.status(204).send();\r\n        }\r\n    }, function(err) {\r\n        re" +
                     "s.status(500).json(err);\r\n    });\r\n};\r\n  \t");
             
-            #line 234 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 239 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
@@ -740,14 +846,14 @@ if (_tenantRequired == true){
             this.Write("\r\n/******************************************************************************" +
                     "************************\r\n Get ");
             
-            #line 239 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 244 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_singleName)));
             
             #line default
             #line hidden
             this.Write(" records by ");
             
-            #line 239 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 244 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
@@ -755,14 +861,14 @@ if (_tenantRequired == true){
             this.Write(" \r\n******************************************************************************" +
                     "************************/\r\nmodule.exports.get");
             
-            #line 241 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 246 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
             
             #line default
             #line hidden
             this.Write("By");
             
-            #line 241 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 246 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
@@ -770,35 +876,35 @@ if (_tenantRequired == true){
             this.Write(" = function (req, res) {\r\n\r\n    // builds clause\r\n    var where = {};\r\n    where " +
                     "= extension.setClause");
             
-            #line 245 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 250 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
             #line hidden
             this.Write("(req, where);\r\n\twhere = common.setClauseActive(req, where);\r\n\t");
             
-            #line 247 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 252 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseExpired(req.query, where);");
             
-            #line 247 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 252 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\r\n    ");
             
-            #line 249 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 254 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 249 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 254 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
@@ -806,14 +912,14 @@ if (_tenantRequired == true){
             this.Write("\r\n\r\n    var attributes = common.excludeAttributes();\r\n\r\n\tvar order = extension.se" +
                     "tClauseOrder(req); \t\r\n\r\n\t");
             
-            #line 256 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
- _recIncludeCount = 0 ; 
+            #line 261 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+ _recIncludeCount = 0 ;   RuleBookList = "";
             
             #line default
             #line hidden
             this.Write(" \t");
             
-            #line 257 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 262 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  foreach(DataRow row2 in GetColumnRow(_singleName)) 
 	{ 
 	var BaseColumnName2 = row2[(int)ColumnInfo.BaseColumnName].ToString();
@@ -823,115 +929,168 @@ if (_tenantRequired == true){
             #line hidden
             this.Write("\t");
             
-            #line 261 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 266 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(BaseColumnName2 != "someFieldName" ){
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 262 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 267 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 var attributesList = "'id','name'"; 
             
             #line default
             #line hidden
-            this.Write(" ");
             
-            #line 262 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
-if(removeId(BaseColumnName2) == "user" ){ attributesList = "'id','firstName','lastName','email'";}
+            #line 267 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(removeId(BaseColumnName2) == "user" ){ attributesList = userAttributesList; RuleBookList = ruleBookFields;}
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 263 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 268 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = ruleBookFields;}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 269 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(isCodeTableField(BaseColumnName2) == true){ attributesList = codeTableAttributesList;RuleBookList = ruleBookFields;}
+            
+            #line default
+            #line hidden
+            this.Write("\t");
+            
+            #line 270 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount == 0 ){
             
             #line default
             #line hidden
             this.Write("\r\n\tvar include = [{ model: db.");
             
-            #line 265 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
             
             #line default
             #line hidden
             this.Write(",attributes: [");
             
-            #line 265 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
             
             #line default
             #line hidden
-            this.Write("]}");
+            this.Write("]");
             
-            #line 265 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
+            
+            #line default
+            #line hidden
+            this.Write(",");
+            
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             
-            #line 266 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
+            
+            #line default
+            #line hidden
+            this.Write("}");
+            
+            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 273 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t\t   ,{model: db.");
             
-            #line 268 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(removeId(BaseColumnName2)));
             
             #line default
             #line hidden
             this.Write(",attributes: [");
             
-            #line 268 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributesList));
             
             #line default
             #line hidden
-            this.Write("]}  ");
+            this.Write("]");
             
-            #line 268 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+if(RuleBookList != "" ){
+            
+            #line default
+            #line hidden
+            this.Write(",");
+            
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             
-            #line 269 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RuleBookList));
+            
+            #line default
+            #line hidden
+            this.Write("}  ");
+            
+            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 276 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 _recIncludeCount++;
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 269 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 276 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }}
             
             #line default
             #line hidden
             
-            #line 269 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 276 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             
-            #line 269 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 276 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
             this.Write("]; \t\r\n");
             
-            #line 270 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 277 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\t\r\n    //find and return the records \r\n    db.");
             
-            #line 272 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 279 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -939,42 +1098,42 @@ if(_recIncludeCount > 0 ) {
             this.Write(".findAll({\r\n        attributes: attributes,\r\n        where: where,\r\n\t\torder: [ord" +
                     "er]");
             
-            #line 275 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 282 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if(_recIncludeCount > 0 ) {
             
             #line default
             #line hidden
             this.Write(",\r\n\t\tinclude: include ");
             
-            #line 276 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 283 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }
             
             #line default
             #line hidden
             this.Write("\t\r\n    }).then(function (");
             
-            #line 277 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 284 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        res.json(");
             
-            #line 278 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 285 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(");\r\n    }, function (err) {\r\n        res.status(500).json(err);\r\n    });\r\n};\r\n");
             
-            #line 283 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 290 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 }}
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 285 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 292 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_codetable == true){
             
             #line default
@@ -984,7 +1143,7 @@ if (_codetable == true){
 ******************************************************************************************************/
 module.exports.get");
             
-            #line 289 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 296 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(_pluralName)));
             
             #line default
@@ -993,35 +1152,35 @@ module.exports.get");
                     "  where = common.setClauseActive(req, where);\r\n    where = common.setClauseExpir" +
                     "ed(req.query, where);\r\n\t");
             
-            #line 295 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 302 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_tenantRequired == true){
             
             #line default
             #line hidden
             this.Write("where = common.setClauseTenantId(req, where);");
             
-            #line 295 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 302 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\r\n\t");
             
-            #line 297 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 304 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
 if (_singleName == "item"){
             
             #line default
             #line hidden
             this.Write("where = extension.setClauseListId(req, where);\r\n\t");
             
-            #line 299 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 306 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n    //find and return the records \r\n    db.");
             
-            #line 301 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 308 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -1029,28 +1188,28 @@ if (_singleName == "item"){
             this.Write(".findAll({\r\n        attributes: [\'id\', \'parentListId\', \'name\', \'code\', \'ruleBookI" +
                     "d\'],\r\n        where: where\r\n    }).then(function (");
             
-            #line 304 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 311 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n        if (!!");
             
-            #line 305 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 312 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(") {\r\n            res.json(");
             
-            #line 306 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 313 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_pluralName));
             
             #line default
             #line hidden
             this.Write(");\r\n        } else {\r\n            res.status(404).json({ \"err\": { \"name\": \"");
             
-            #line 308 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 315 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_singleName));
             
             #line default
@@ -1058,20 +1217,20 @@ if (_singleName == "item"){
             this.Write("\", \"message\": \"An error occurred retrieving the record\" } });\r\n        }\r\n    }, " +
                     "function (err) {\r\n        res.status(500).json(err);\r\n    })\r\n};\t\r\n");
             
-            #line 314 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 321 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  } 
             
             #line default
             #line hidden
             this.Write(" \r\n\r\n");
             
-            #line 316 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 323 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 317 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 324 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
  if ((_singleName == "item"))  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\nongenerated\\"+ _singleName +".controller.js";
      if (File.Exists(path)) {
@@ -1083,7 +1242,7 @@ if (_singleName == "item"){
             #line default
             #line hidden
             
-            #line 324 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
+            #line 331 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -1095,6 +1254,10 @@ if (_singleName == "item"){
 
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "'id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -1128,7 +1291,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\..\..\..\..\shared\helper.ttinclude"
+        #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -1245,7 +1408,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTableField(string columnName )  
+{
+   if ((getLastChars(columnName,2)) == "Id" && (columnName != "ruleBookId"))   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -1270,7 +1444,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;

@@ -427,6 +427,7 @@ export class ");
 
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'processflags']}]";
 
 public enum ColumnInfo
 {
@@ -460,7 +461,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\..\..\..\..\shared\helper.ttinclude"
+        #line 35 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -492,12 +493,20 @@ IEnumerable<string> GetColumnDetails()
 
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
-
+			//tableName = tableName.ToString().ToLower();
+			
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
-            // Define a query
-            NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM " + tableName, conn);
+			StringBuilder sb = new StringBuilder();
+ 
+		    sb.Append(" SELECT * FROM ");
+			sb.Append("\"");
+			sb.Append(tableName);
+			sb.Append("\"");
+
+	       // Define a query
+            NpgsqlCommand command = new NpgsqlCommand(sb.ToString(), conn);
 
              
             using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))
@@ -569,7 +578,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTable(string columnName )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -594,7 +614,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;

@@ -1,6 +1,10 @@
 ﻿<#+
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "'id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -147,7 +151,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTableField(string columnName )  
+{
+   if ((getLastChars(columnName,2)) == "Id" && (columnName != "ruleBookId"))   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -172,7 +187,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;

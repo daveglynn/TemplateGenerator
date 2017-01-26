@@ -114,9 +114,9 @@ if (_singleName == "user"){
             
             #line default
             #line hidden
-            this.Write("\tbody.createdBy = null;\r\n  \t");
+            this.Write("\tbody.createdBy = null; \r\n\tbody.tenantId = null;\r\n  \t");
             
-            #line 48 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 49 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
@@ -125,42 +125,42 @@ if (_singleName == "user"){
             #line hidden
             this.Write("\tif (body.");
             
-            #line 51 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 52 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" == null) {\r\n\t\t\tbody.");
             
-            #line 52 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 53 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = constants.");
             
-            #line 52 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 53 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("_Default.toString();\r\n\t\t}\r\n    ");
             
-            #line 54 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write(" body.createdBy = common.modelUserId(req);");
             
-            #line 55 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 56 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }
             
             #line default
@@ -169,7 +169,7 @@ if (_singleName == "user"){
                     "rn body;  \r\n};\r\n\r\nmodule.exports.prepareForUpdate =  function (body) {\r\n        " +
                     "\r\n    var attributes = {};\r\n\r\n\t");
             
-            #line 67 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 68 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(allowFields(BaseColumnName,false,false,true,false)){
@@ -178,28 +178,28 @@ if (_singleName == "user"){
             #line hidden
             this.Write("if (body.hasOwnProperty(\'");
             
-            #line 69 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 70 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\')) {\r\n\t\tattributes.");
             
-            #line 70 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 71 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = body.");
             
-            #line 70 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 71 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(";\r\n\t}\r\n\t");
             
-            #line 72 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 73 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}
             
             #line default
@@ -208,7 +208,7 @@ if (_singleName == "user"){
                     ", where) {\t\r\n\r\n \tif (query.hasOwnProperty(\'q\') && query.q.length > 0) {\r\n\t\twhere" +
                     " = {\r\n\t\t$or: [\r\n  \t");
             
-            #line 81 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 82 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
@@ -219,42 +219,42 @@ if (_singleName == "user"){
             #line hidden
             this.Write("\t");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 if(_recCount> 0){
             
             #line default
             #line hidden
             this.Write(",");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }
             
             #line default
             #line hidden
             this.Write("{");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(": { $like: \'%\' + query.q + \'%\' }} ");
             
-            #line 86 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 _recCount++;
             
             #line default
             #line hidden
             this.Write(" \r\n\t");
             
-            #line 87 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 88 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}}
             
             #line default
             #line hidden
             this.Write(" \t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\r\n  \t");
             
-            #line 91 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 92 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	var DataType = row[(int)ColumnInfo.DataType].ToString();
@@ -265,42 +265,42 @@ _recCount++;
             #line hidden
             this.Write("if (query.hasOwnProperty(\'");
             
-            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 97 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\') && query.");
             
-            #line 96 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 97 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(".length > 0) {\r\n\t\t\twhere.");
             
-            #line 97 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = {\r\n\t\t\t$eq: query.");
             
-            #line 98 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 99 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t};\r\n\t\t}\r\n    ");
             
-            #line 101 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 102 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}}
             
             #line default
             #line hidden
             this.Write("\r\n  \t");
             
-            #line 103 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 104 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
@@ -309,42 +309,42 @@ _recCount++;
             #line hidden
             this.Write("if (query.hasOwnProperty(\'");
             
-            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\') && query.");
             
-            #line 106 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(".length > 0) {\r\n\t\t\twhere.");
             
-            #line 107 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = {\r\n\t\t\t$eq: query.");
             
-            #line 108 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 109 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t};\r\n\t\t}\r\n    ");
             
-            #line 111 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 112 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}
             
             #line default
             #line hidden
             this.Write("\treturn where;\r\n};\r\n  \t");
             
-            #line 114 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 115 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){
@@ -353,42 +353,42 @@ _recCount++;
             #line hidden
             this.Write("\r\nmodule.exports.setClause");
             
-            #line 118 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 119 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(firstUpper(BaseColumnName)));
             
             #line default
             #line hidden
             this.Write(" = function (req, where) {\r\n  \r\n    var ");
             
-            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 121 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = parseInt(req.params.");
             
-            #line 120 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 121 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(", 10);\r\n    where.");
             
-            #line 121 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 122 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write(" = {\r\n         $eq: ");
             
-            #line 122 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 123 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\r\n    };\r\n\r\n\treturn where;\r\n};\r\n\t");
             
-            #line 127 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 128 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }}
             
             #line default
@@ -409,7 +409,7 @@ module.exports.setClauseOrder = function (req) {
         if ((req.body.hasOwnProperty(req.query.orderBy)) 
 		");
             
-            #line 142 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 143 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  foreach(DataRow row in GetColumnRow(_singleName))  
 		{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
             
@@ -417,14 +417,14 @@ module.exports.setClauseOrder = function (req) {
             #line hidden
             this.Write("\t\t\t|| (req.query.orderBy == \'");
             
-            #line 144 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 145 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseColumnName));
             
             #line default
             #line hidden
             this.Write("\')\r\n\t\t");
             
-            #line 145 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 146 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
 }
             
             #line default
@@ -453,13 +453,13 @@ module.exports.setClauseOrder = function (req) {
 
 ");
             
-            #line 167 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 168 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  var _nongenerated = ""; 
             
             #line default
             #line hidden
             
-            #line 168 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 169 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
  if ((_singleName == "list")  )  { 
     string path = System.IO.Directory.GetParent(Environment.CurrentDirectory).FullName.Replace("\\bin","") +"\\api_code\\v1\\api\\controllers\\extensions\\nongenerated\\"+ _singleName +".extension.js";
      if (File.Exists(path)) {
@@ -471,7 +471,7 @@ module.exports.setClauseOrder = function (req) {
             #line default
             #line hidden
             
-            #line 175 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
+            #line 176 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\Extension.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_nongenerated));
             
             #line default
@@ -484,6 +484,10 @@ module.exports.setClauseOrder = function (req) {
 
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -517,7 +521,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\..\..\..\..\..\shared\helper.ttinclude"
+        #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\controllers\extensions\..\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -634,7 +638,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTable(string columnName )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -659,7 +674,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;

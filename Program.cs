@@ -13,17 +13,18 @@ namespace TemplateGenerator
           //callGenerateApi("C:\\temp\\backend\\");
           //callGenerateClient("C:\\temp\\frontend\\");
 
-          callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
+           callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
           //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
 
         }
+
 
         static void callGenerateApi(string directory)
         {
 
             callGeneratorController(directory + "controllers\\", "access", "access", true, true);
 
-            callGeneratorController(directory + "controllers\\", "object", "objects", false, true);
+            callGeneratorController(directory + "controllers\\", "object", "objects", false,true);
             callGeneratorController(directory + "controllers\\", "user", "users", true, false);
             callGeneratorController(directory + "controllers\\", "tenant", "tenants", false, false);
             callGeneratorController(directory + "controllers\\", "todo", "todos", true, false);
@@ -68,7 +69,7 @@ namespace TemplateGenerator
 
         static void callGenerateClient(string directory)
         {
-            callGeneratorService(directory + "system\\objects\\", "object", "objects", false);
+            callGeneratorService(directory + "security\\objects\\", "object", "objects", false);
             callGeneratorService(directory + "security\\users\\", "user", "users", false);
             callGeneratorService(directory + "security\\tenants\\", "tenant", "tenants", false);
             callGeneratorService(directory + "security\\access\\", "access", "access", false);

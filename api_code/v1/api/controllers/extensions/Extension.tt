@@ -44,7 +44,8 @@ module.exports.setPost = function (req, mode) {
 
     //add createdBy
     if (mode == 'C') {
-	<# if (_singleName == "user")  {#>	body.createdBy = null;
+	<# if (_singleName == "user")  {#>	body.createdBy = null; 
+	body.tenantId = null;
   	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>

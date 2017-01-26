@@ -320,6 +320,10 @@ if (_singleName == "item"){
 
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -353,7 +357,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\..\..\..\..\shared\helper.ttinclude"
+        #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\api_code\v1\api\routes\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -470,7 +474,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTable(string columnName )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -495,7 +510,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;

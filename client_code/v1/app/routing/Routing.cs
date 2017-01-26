@@ -196,6 +196,10 @@ import { ");
 
  
 
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -229,12 +233,12 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 34 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\..\..\..\..\shared\helper.ttinclude"
+        #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\routing\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
             // Define a query
@@ -261,12 +265,20 @@ IEnumerable<string> GetColumnDetails()
 
 IEnumerable<DataRow> GetColumnRow(string tableName  )  
 { 
-
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d;");
+			//tableName = tableName.ToString().ToLower();
+			
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=Houses22;Database=d2d_v1;");
             conn.Open();
 
-            // Define a query
-            NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM " + tableName, conn);
+			StringBuilder sb = new StringBuilder();
+ 
+		    sb.Append(" SELECT * FROM ");
+			sb.Append("\"");
+			sb.Append(tableName);
+			sb.Append("\"");
+
+	       // Define a query
+            NpgsqlCommand command = new NpgsqlCommand(sb.ToString(), conn);
 
              
             using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))
@@ -338,7 +350,18 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
    return false;
   
 }	
- 
+
+
+public bool isCodeTable(string columnName )  
+{
+   if (getLastChars(columnName,2) == "Id")   
+   {
+		return true;
+	}else {
+		return false;
+	  }
+}	 
+
 public bool getIDfieldsForInclude(string columnName,bool includeTenant, bool includeId    )  
 {
    if (getLastChars(columnName,2) == "Id")   
@@ -363,7 +386,7 @@ public string getLastChars( string source,  int tail_length)
        return source.Substring(source.Length - tail_length);
     }
 }
- 
+
 public string firstUpper(string str)
 {
     if (String.IsNullOrEmpty(str)) return str;
@@ -376,12 +399,13 @@ public string removeId(string str)
     return str.Remove(str.Length - 2);
 }
 
-public string getCsharpType(string str)
+public string getCsharpType(string str,bool convertDateToString)
 {
     if ( str == "System.Int32") return "number";
     if ( str == "System.String") return "string";
     if ( str == "System.Boolean") return "boolean";
-    if ( str == "System.DateTime") return "Date";
+    if (( str == "System.DateTime") && (convertDateToString == true)) return "string";
+    if (( str == "System.DateTime") && (convertDateToString == false)) return "Date";
  
 	return str;
 }
