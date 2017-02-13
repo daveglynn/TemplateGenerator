@@ -427,7 +427,10 @@ export class ");
 
  
 
-public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'processflags']}]";
+public string  ruleBookFields = " include: [{model: db.ruleBook, attributes: ['id', 'active','name','processflags']}]";
+public string  userAttributesList = "'id','firstName','lastName','email'";
+public string  ruleBookAttributesList = "'id', 'active', 'name', 'processflags'";
+public string codeTableAttributesList = "'id', 'active', 'parentListId', 'name', 'code', 'ruleBookId'";
 
 public enum ColumnInfo
 {
@@ -461,7 +464,7 @@ public enum ColumnInfo
         #line default
         #line hidden
         
-        #line 35 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\..\..\..\..\shared\helper.ttinclude"
+        #line 38 "C:\SkyDrive\Lenovo\Olympus\Products\d2d\system\templategenerator\v1\client_code\v1\app\service\..\..\..\..\shared\helper.ttinclude"
  
 IEnumerable<string> GetColumnDetails()  
 { 
@@ -580,9 +583,9 @@ public bool getIDfields(string columnName,bool includeTenant, bool includeId    
 }	
 
 
-public bool isCodeTable(string columnName )  
+public bool isCodeTableField(string columnName )  
 {
-   if (getLastChars(columnName,2) == "Id")   
+   if ((getLastChars(columnName,2)) == "Id" && (columnName != "ruleBookId"))   
    {
 		return true;
 	}else {

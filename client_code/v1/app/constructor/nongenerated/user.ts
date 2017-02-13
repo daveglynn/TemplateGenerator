@@ -6,6 +6,6 @@
 import { DropDownItem } from "./../../master/items/item";
 
 export class Search {
-    constructor(public profile: DropDownItem, public language: DropDownItem, public q: string, public orderBy: DropDownItem, public orderDir: DropDownItem) { }
+    constructor(public profileId: string, public languageId: string, public roleId: string, public q: string, public orderBy: string, public orderDir: string) { }
 }
 

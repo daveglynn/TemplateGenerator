@@ -151,7 +151,7 @@ module.exports.get<#=firstUpper(_singleName)#>ById = function(req, res) {
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
 	<#if(BaseColumnName2 != "someFieldName" ){#>
 	<#var attributesList = "'id','name'"; #><#if(removeId(BaseColumnName2) == "user" ){ attributesList = userAttributesList; RuleBookList = ruleBookFields;}#>
-	<#if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = ruleBookFields;}#>
+	<#if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = "";}#>
 	<#if(isCodeTableField(BaseColumnName2) == true){ attributesList = codeTableAttributesList;RuleBookList = ruleBookFields;}#>
 	<#if(_recIncludeCount == 0 ){#>
 
@@ -265,7 +265,7 @@ module.exports.get<#=firstUpper(_pluralName)#>By<#=firstUpper(BaseColumnName)#> 
 	if(getIDfieldsForInclude(BaseColumnName2,false,false)){#>
 	<#if(BaseColumnName2 != "someFieldName" ){#>
 	<#var attributesList = "'id','name'"; #><#if(removeId(BaseColumnName2) == "user" ){ attributesList = userAttributesList; RuleBookList = ruleBookFields;}#>
-	<#if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = ruleBookFields;}#>
+	<#if(removeId(BaseColumnName2) == "ruleBook" ){ attributesList = ruleBookAttributesList; RuleBookList = "";}#>
 	<#if(isCodeTableField(BaseColumnName2) == true){ attributesList = codeTableAttributesList;RuleBookList = ruleBookFields;}#>
 	<#if(_recIncludeCount == 0 ){#>
 
@@ -300,14 +300,49 @@ module.exports.get<#=firstUpper(_pluralName)#>Dropdown = function (req, res) {
     where = common.setClauseActive(req, where);
     where = common.setClauseExpired(req.query, where);
 	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
-
 	<#if (_singleName == "item"){#>
 where = extension.setClauseListId(req, where);
 	<# } #> 
-    //find and return the records 
+    var order = extension.setClauseOrder(req); 	
+	
+	//find and return the records 
     db.<#=_singleName#>.findAll({
         attributes: ['id', 'parentListId', 'name', 'code', 'ruleBookId'],
-        where: where
+        where: where,
+        order: [order]
+    }).then(function (<#=_pluralName#>) {
+        if (!!<#=_pluralName#>) {
+            res.json(<#=_pluralName#>);
+        } else {
+            res.status(404).json({ "err": { "name": "<#=_singleName#>", "message": "An error occurred retrieving the record" } });
+        }
+    }, function (err) {
+        res.status(500).json(err);
+    })
+};
+
+/******************************************************************************************************
+ Get a Record for Dropdown By Id
+******************************************************************************************************/
+module.exports.get<#=firstUpper(_pluralName)#>DropdownById = function (req, res) {
+
+    // builds clause
+    var where = {};
+    where = common.setClauseActive(req, where);
+    where = common.setClauseExpired(req.query, where);
+	<#if (_tenantRequired == true){#>where = common.setClauseTenantId(req, where);<# } #> 
+	<#if (_singleName == "item"){#>
+where = extension.setClauseListId(req, where);
+	<# } #> 
+    var order = extension.setClauseOrder(req); 	
+    var include = [{ model: db.ruleBook, attributes: [<#=ruleBookAttributesList#>]}]; 	
+	
+	//find and return the records 
+    db.<#=_singleName#>.findAll({
+        attributes: ['id', 'parentListId', 'name', 'code', 'ruleBookId'],
+        where: where,
+        order: [order],
+        include: include 
     }).then(function (<#=_pluralName#>) {
         if (!!<#=_pluralName#>) {
             res.json(<#=_pluralName#>);
