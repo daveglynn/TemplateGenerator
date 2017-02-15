@@ -43,14 +43,16 @@ export class <#=firstUpper(_singleName)#>Service {
 
     get<#=firstUpper(_pluralName)#>All(filter?) {
         var parms = {};
+		var idCode = "";
         if (filter && filter.q) {
             parms['q'] = filter.q;
         }
 	<# foreach(DataRow row in GetColumnRow(_singleName)) 
 	{ var BaseColumnName = row[(int)ColumnInfo.BaseColumnName].ToString();
 	if(getIDfields(BaseColumnName,false,false)){#>
-	if (filter && filter.<#=removeId(BaseColumnName)#> && filter.<#=removeId(BaseColumnName)#>.id != 0) {
-            parms['<#=BaseColumnName#>'] = filter.<#=removeId(BaseColumnName)#>.id;
+	if (filter && filter.<#=removeId(BaseColumnName)#> && filter.<#=removeId(BaseColumnName)#>.idCode.trim() != "") {
+			idCode = filter.<#=removeId(BaseColumnName)#>.idCode.split(":")
+            parms['<#=BaseColumnName#>'] = idCode[0];
 		};
     <#}}#>
   	<# foreach(DataRow row in GetColumnRow(_singleName)) 
@@ -63,11 +65,13 @@ if (filter && filter.<#=BaseColumnName#>) {
 		};
     <#}}}#>
 
-		if (filter && filter.orderDir && filter.orderDir.code != "") {
-			parms['orderDir'] = filter.orderDir.code;
+		if (filter && filter.orderDir && filter.orderDir.idCode.trim() != "") {
+			idCode = filter.orderDir.idCode.split(":")
+			parms['orderDir'] = idCode[1];
 		};
-		if (filter && filter.orderBy && filter.orderBy.code != "") {
-			parms['orderBy'] = filter.orderBy.code;
+		if (filter && filter.orderBy && filter.orderBy.idCode.trim() != "") {
+			idCode = filter.orderBy.idCode.split(":")
+			parms['orderBy'] = idCode[1];
 		};
 
         const headers = new Headers({ 'Content-Type': 'application/json' });
