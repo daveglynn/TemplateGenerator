@@ -14,7 +14,7 @@ namespace TemplateGenerator
           //callGenerateClient("C:\\temp\\frontend\\");
 
           callGenerateApi("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\api\\v1\\api\\");
-          callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
+          //callGenerateClient("C:\\SkyDrive\\Lenovo\\Olympus\\Products\\d2d\\system\\d2d-client-sq303-bs4\\v1\\src\\app\\d2dapp\\");
 
         }
 
